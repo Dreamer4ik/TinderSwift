@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF235D4428BFDCB200089DE3 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */; };
 		DF470C3F28BFD85700C2699A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF470C3E28BFD85700C2699A /* AppDelegate.swift */; };
 		DF470C4128BFD85700C2699A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF470C4028BFD85700C2699A /* SceneDelegate.swift */; };
-		DF470C4328BFD85700C2699A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF470C4228BFD85700C2699A /* ViewController.swift */; };
-		DF470C4628BFD85700C2699A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF470C4428BFD85700C2699A /* Main.storyboard */; };
+		DF470C4328BFD85700C2699A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF470C4228BFD85700C2699A /* HomeViewController.swift */; };
 		DF470C4828BFD85B00C2699A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF470C4728BFD85B00C2699A /* Assets.xcassets */; };
 		DF470C4B28BFD85B00C2699A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF470C4928BFD85B00C2699A /* LaunchScreen.storyboard */; };
+		DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF470C5D28BFDBB100C2699A /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
 		DF470C3B28BFD85700C2699A /* TinderSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF470C3E28BFD85700C2699A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF470C4028BFD85700C2699A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DF470C4228BFD85700C2699A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DF470C4528BFD85700C2699A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DF470C4228BFD85700C2699A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DF470C4728BFD85B00C2699A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF470C4A28BFD85B00C2699A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF470C4C28BFD85B00C2699A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF470C5D28BFDBB100C2699A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,64 @@
 		DF470C3D28BFD85700C2699A /* TinderSwift */ = {
 			isa = PBXGroup;
 			children = (
+				DF470C5A28BFD8BA00C2699A /* Model */,
+				DF470C5528BFD8B200C2699A /* View */,
+				DF470C5928BFD8B800C2699A /* ViewModel */,
+				DF470C5828BFD8B700C2699A /* Controller */,
+				DF470C5728BFD8B500C2699A /* API */,
+				DF470C5628BFD8B400C2699A /* Utils */,
 				DF470C3E28BFD85700C2699A /* AppDelegate.swift */,
 				DF470C4028BFD85700C2699A /* SceneDelegate.swift */,
-				DF470C4228BFD85700C2699A /* ViewController.swift */,
-				DF470C4428BFD85700C2699A /* Main.storyboard */,
+				DF470C4228BFD85700C2699A /* HomeViewController.swift */,
 				DF470C4728BFD85B00C2699A /* Assets.xcassets */,
 				DF470C4928BFD85B00C2699A /* LaunchScreen.storyboard */,
 				DF470C4C28BFD85B00C2699A /* Info.plist */,
 			);
 			path = TinderSwift;
+			sourceTree = "<group>";
+		};
+		DF470C5528BFD8B200C2699A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF470C5628BFD8B400C2699A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DF470C5D28BFDBB100C2699A /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DF470C5728BFD8B500C2699A /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		DF470C5828BFD8B700C2699A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DF470C5928BFD8B800C2699A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DF470C5A28BFD8BA00C2699A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +178,6 @@
 			files = (
 				DF470C4B28BFD85B00C2699A /* LaunchScreen.storyboard in Resources */,
 				DF470C4828BFD85B00C2699A /* Assets.xcassets in Resources */,
-				DF470C4628BFD85700C2699A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +188,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF470C4328BFD85700C2699A /* ViewController.swift in Sources */,
+				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,
+				DF470C4328BFD85700C2699A /* HomeViewController.swift in Sources */,
+				DF235D4428BFDCB200089DE3 /* HomeNavigationStackView.swift in Sources */,
 				DF470C3F28BFD85700C2699A /* AppDelegate.swift in Sources */,
 				DF470C4128BFD85700C2699A /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +199,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DF470C4428BFD85700C2699A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DF470C4528BFD85700C2699A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DF470C4928BFD85B00C2699A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +336,6 @@
 				INFOPLIST_FILE = TinderSwift/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +363,6 @@
 				INFOPLIST_FILE = TinderSwift/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
