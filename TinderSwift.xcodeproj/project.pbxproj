@@ -14,6 +14,8 @@
 		DF470C4828BFD85B00C2699A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF470C4728BFD85B00C2699A /* Assets.xcassets */; };
 		DF470C4B28BFD85B00C2699A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF470C4928BFD85B00C2699A /* LaunchScreen.storyboard */; };
 		DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF470C5D28BFDBB100C2699A /* Extensions.swift */; };
+		DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4A424C28C0AE8200E06A85 /* BottomControlsStackView.swift */; };
+		DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89789E28C1101E00E1DBD0 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		DF470C4A28BFD85B00C2699A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF470C4C28BFD85B00C2699A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF470C5D28BFDBB100C2699A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DF4A424C28C0AE8200E06A85 /* BottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlsStackView.swift; sourceTree = "<group>"; };
+		DF89789E28C1101E00E1DBD0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */,
+				DF4A424C28C0AE8200E06A85 /* BottomControlsStackView.swift */,
+				DF89789E28C1101E00E1DBD0 /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +194,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */,
+				DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */,
 				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,
 				DF470C4328BFD85700C2699A /* HomeViewController.swift in Sources */,
 				DF235D4428BFDCB200089DE3 /* HomeNavigationStackView.swift in Sources */,

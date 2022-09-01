@@ -19,8 +19,13 @@ class HomeNavigationStackView: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        heightAnchor.constraint(equalToConstant: 80).isActive = true
+        tinderIcon.contentMode = .scaleAspectFit
+        
         settingsButton.setImage(UIImage(named: "top_left_profile")?.withRenderingMode(.alwaysOriginal), for: .normal)
         messageButton.setImage(UIImage(named: "top_right_messages")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        
         [settingsButton, UIView(), tinderIcon, UIView(), messageButton].forEach { view in
             addArrangedSubview(view)
         }
