@@ -34,12 +34,21 @@ class HomeViewController: UIViewController {
     func configureCards() {
         let cardView1 = CardView()
         let cardView2 = CardView()
+        let cardView3 = CardView()
+        let cardView4 = CardView()
+        let cardView5 = CardView()
         
         deckView.addSubview(cardView1)
         deckView.addSubview(cardView2)
+        deckView.addSubview(cardView3)
+        deckView.addSubview(cardView4)
+        deckView.addSubview(cardView5)
         
         cardView1.fillSuperview()
         cardView2.fillSuperview()
+        cardView3.fillSuperview()
+        cardView4.fillSuperview()
+        cardView5.fillSuperview()
     }
     
     func configureUI() {
