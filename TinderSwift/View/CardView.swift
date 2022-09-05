@@ -17,23 +17,17 @@ class CardView: UIView {
     // MARK: - Properties
     
     private let gradientLayer = CAGradientLayer()
+    private let viewModel: CardViewModel
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "jane1")
         return imageView
     }()
     
     private let infoLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        
-        let attributedText = NSMutableAttributedString(string: "Jane Doe",
-                                                       attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy), .foregroundColor: UIColor.white])
-        attributedText.append(NSAttributedString(string: "  20",
-                                                 attributes: [.font: UIFont.systemFont(ofSize: 24), .foregroundColor: UIColor.white]))
-        label.attributedText = attributedText
         return label
     }()
     
@@ -86,24 +80,16 @@ class CardView: UIView {
         return button
     }()
     
-    // Test
-    private var viewTest1: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
-    }()
-    
-    private var viewTest2: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
-    }()
     // MARK: - Lifecycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewModel: CardViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
         
         configureGestureRecognizers()
+        
+        imageView.image = viewModel.user.images.first
+        infoLabel.attributedText = viewModel.userInfoText
         
         backgroundColor = .systemPurple
         layer.cornerRadius = 10
@@ -138,7 +124,7 @@ class CardView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = bounds
-
+        
         
         likeLabel.rotation = -15
         likeLabel.sizeToFit()
@@ -156,24 +142,24 @@ class CardView: UIView {
         superLikeLabel.bounds = CGRect(x: superLikeLabel.left, y: superLikeLabel.top, width: 220, height: 135)
         
         // #First try
-//        likeLabel.frame = CGRect(
-//            x: 5,
-//            y: top + 47.32,
-//            width: 160,
-//            height: 20
-//        )
+        //        likeLabel.frame = CGRect(
+        //            x: 5,
+        //            y: top + 47.32,
+        //            width: 160,
+        //            height: 20
+        //        )
         //        nopeLabel.frame = CGRect(
         //            x: width - 170,
         //            y: top + 10,
         //            width: 150,
         //            height: 100
         //        )
-//        superLikeLabel.frame = CGRect(
-//            x: (width - superLikeLabel.width)/2,
-//            y: infoLabel.top - 90,
-//            width: 250,
-//            height: 70
-//        )
+        //        superLikeLabel.frame = CGRect(
+        //            x: (width - superLikeLabel.width)/2,
+        //            y: infoLabel.top - 90,
+        //            width: 250,
+        //            height: 70
+        //        )
         
         
     }
@@ -195,7 +181,17 @@ class CardView: UIView {
     }
     
     @objc private func handleChangePhoto(sender: UITapGestureRecognizer) {
+        let location = sender.location(in: nil).x
+        let shouldShowNextPhoto = location > width/2
         
+        if shouldShowNextPhoto {
+            viewModel.showNextPhoto()
+        }
+        else {
+            viewModel.showPreviousPhoto()
+        }
+        
+        imageView.image = viewModel.imageToShow
     }
     
     // MARK: - Helpers
@@ -211,7 +207,7 @@ class CardView: UIView {
     func showLabelWithFeel(sender: UIPanGestureRecognizer) {
         let direction = sender.translation(in: nil).x
         let directionForTop = sender.translation(in: nil).y
-        print(directionForTop)
+        
         if direction > 0 {
             likeLabel.alpha = abs(direction/300)
             likeLabel.isHidden = false
@@ -219,7 +215,6 @@ class CardView: UIView {
             superLikeLabel.isHidden = true
         }
         else if directionForTop < 0 {
-            print(directionForTop)
             superLikeLabel.alpha = abs(directionForTop/300)
             superLikeLabel.isHidden = false
             likeLabel.isHidden = true

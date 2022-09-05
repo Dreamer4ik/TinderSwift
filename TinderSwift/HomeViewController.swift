@@ -32,23 +32,28 @@ class HomeViewController: UIViewController {
     // MARK: - Helpers
     
     func configureCards() {
-        let cardView1 = CardView()
-        let cardView2 = CardView()
-        let cardView3 = CardView()
-        let cardView4 = CardView()
-        let cardView5 = CardView()
+        let images1 = [UIImage(named: "jane1"), UIImage(named: "jane2"), UIImage(named: "jane3")].compactMap({$0})
+        let user1 = User(name: "Jane Doe", age: 22, images: images1)
+        let images2 = [UIImage(named: "kelly1"), UIImage(named: "kelly2"), UIImage(named: "kelly3")].compactMap({$0})
+        let user2 = User(name: "Kelly", age: 21, images: images2)
         
+        let cardView1 = CardView(viewModel: CardViewModel(user: user1))
+        let cardView2 = CardView(viewModel: CardViewModel(user: user2))
+//        let cardView3 = CardView()
+//        let cardView4 = CardView()
+//        let cardView5 = CardView()
+   
         deckView.addSubview(cardView1)
         deckView.addSubview(cardView2)
-        deckView.addSubview(cardView3)
-        deckView.addSubview(cardView4)
-        deckView.addSubview(cardView5)
+//        deckView.addSubview(cardView3)
+//        deckView.addSubview(cardView4)
+//        deckView.addSubview(cardView5)
         
         cardView1.fillSuperview()
         cardView2.fillSuperview()
-        cardView3.fillSuperview()
-        cardView4.fillSuperview()
-        cardView5.fillSuperview()
+//        cardView3.fillSuperview()
+//        cardView4.fillSuperview()
+//        cardView5.fillSuperview()
     }
     
     func configureUI() {
