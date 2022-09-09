@@ -20,6 +20,7 @@
 		DF571B1728C7D5E80030BC64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF571B1628C7D5E80030BC64 /* LoginViewController.swift */; };
 		DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF571B1828C7D6140030BC64 /* RegistrationViewController.swift */; };
 		DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89789E28C1101E00E1DBD0 /* CardView.swift */; };
+		DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */; };
 		DFA64F1828CA524C00553ED6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1728CA524C00553ED6 /* CustomTextField.swift */; };
 		DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1928CA55BF00553ED6 /* AuthButton.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		DF571B1628C7D5E80030BC64 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DF571B1828C7D6140030BC64 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		DF89789E28C1101E00E1DBD0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		DFA64F1728CA524C00553ED6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DFA64F1928CA55BF00553ED6 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				DF2E6F9728C5FD7300D1E334 /* CardViewModel.swift */,
+				DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			files = (
 				DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */,
 				DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */,
+				DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */,
 				DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */,
 				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,
 				DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */,

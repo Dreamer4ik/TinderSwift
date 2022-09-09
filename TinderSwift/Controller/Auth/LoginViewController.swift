@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
 
     // MARK: - Properties
+    private var viewModel = LoginViewModel()
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -38,10 +39,21 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTextFieldObservers()
         configureUI()
     }
     
     // MARK: - Helpers
+    
+    func checkFormStatus() {
+        if viewModel.formIsValid {
+            authButton.isEnabled = true
+            authButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        } else {
+            authButton.isEnabled = false
+            authButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        }
+    }
     
     private func configureUI() {
         navigationController?.navigationBar.isHidden = true
@@ -108,6 +120,13 @@ class LoginViewController: UIViewController {
         )
     }
     
+    func configureTextFieldObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    // MARK: - Actions
+    
     @objc private func didTapLogIn() {
         
     }
@@ -115,5 +134,14 @@ class LoginViewController: UIViewController {
     @objc private func didTapRegistration() {
         let vc = RegistrationViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        checkFormStatus()
     }
 }
