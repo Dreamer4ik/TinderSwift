@@ -18,7 +18,7 @@ class CustomTextField: UITextField {
         leftViewMode = .always
         
         keyboardAppearance = .dark
-        
+        autocapitalizationType = .none
         borderStyle = .none
         textColor = .white
         backgroundColor = UIColor(white: 1, alpha: 0.2)
