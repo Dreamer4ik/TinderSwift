@@ -347,6 +347,15 @@ PODS:
   - GTMSessionFetcher/Core (1.7.0)
   - JGProgressHUD (2.2)
   - leveldb-library (1.22.1)
+  - lottie-ios (3.3.0)
+  - MetalPetal (1.24.2):
+    - MetalPetal/Core (= 1.24.2)
+  - MetalPetal/Core (1.24.2)
+  - MetalPetal/Swift (1.24.2):
+    - MetalPetal/Core
+  - MTTransitions (1.6.6):
+    - MetalPetal
+    - MetalPetal/Swift
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -364,6 +373,8 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseAnalytics
   - JGProgressHUD
+  - lottie-ios
+  - MTTransitions
   - SDWebImage
 
 SPEC REPOS:
@@ -386,6 +397,9 @@ SPEC REPOS:
     - GTMSessionFetcher
     - JGProgressHUD
     - leveldb-library
+    - lottie-ios
+    - MetalPetal
+    - MTTransitions
     - nanopb
     - PromisesObjC
     - SDWebImage
@@ -409,10 +423,13 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  MetalPetal: 063cb7f12c011a22fd311a355a4bd05302fc0de4
+  MTTransitions: 4278dc33bbeb23c15391c47273754f748541f2a4
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
 
-PODFILE CHECKSUM: 1358d9348d6323445a07ad35e68e89197edd5f72
+PODFILE CHECKSUM: 91ab54d465a94000d659f93af4494356491521ff
 
 COCOAPODS: 1.11.2

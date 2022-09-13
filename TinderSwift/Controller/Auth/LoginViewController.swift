@@ -128,7 +128,18 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func didTapLogIn() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text else {
+            return
+        }
         
+        AuthService.logUserIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("Error user log in \(error.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true)
+        }
     }
     
     @objc private func didTapRegistration() {
