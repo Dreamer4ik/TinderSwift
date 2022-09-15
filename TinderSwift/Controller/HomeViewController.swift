@@ -15,6 +15,12 @@ class HomeViewController: UIViewController {
     private let topStack = HomeNavigationStackView()
     private let bottomStack = BottomControlsStackView()
     
+    private var viewModels = [CardViewModel]() {
+        didSet {
+            configureCards()
+        }
+    }
+    
     private let deckView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemPink
@@ -28,18 +34,26 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         chechUserIsLoggedIn()
         configureUI()
-        configureCards()
-        fetchUser()
+        fetchUsers()
+//        fetchUser()
 //        logOut()
     }
     
     // MARK: - API
-    func fetchUser() {
+    private func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
         Service.fetchUser(withUid: uid) { user in
-            print("Execute User...")
+            print("Execute User...\(user)")
+        }
+    }
+    
+    private func fetchUsers() {
+        Service.fetchUsers { users in
+            self.viewModels = users.map({
+                CardViewModel(user: $0)
+            })
         }
     }
     
@@ -65,32 +79,16 @@ class HomeViewController: UIViewController {
     // MARK: - Helpers
     
     private func configureCards() {
-        let images1 = [UIImage(named: "jane1"), UIImage(named: "jane2"), UIImage(named: "jane3")].compactMap({$0})
-        let user1 = User(name: "Jane Doe", age: 22, images: images1)
-        let images2 = [UIImage(named: "kelly1"), UIImage(named: "kelly2"), UIImage(named: "kelly3")].compactMap({$0})
-        let user2 = User(name: "Kelly", age: 21, images: images2)
-        
-        let cardView1 = CardView(viewModel: CardViewModel(user: user1))
-        let cardView2 = CardView(viewModel: CardViewModel(user: user2))
-        //        let cardView3 = CardView()
-        //        let cardView4 = CardView()
-        //        let cardView5 = CardView()
-        
-        deckView.addSubview(cardView1)
-        deckView.addSubview(cardView2)
-        //        deckView.addSubview(cardView3)
-        //        deckView.addSubview(cardView4)
-        //        deckView.addSubview(cardView5)
-        
-        cardView1.fillSuperview()
-        cardView2.fillSuperview()
-        //        cardView3.fillSuperview()
-        //        cardView4.fillSuperview()
-        //        cardView5.fillSuperview()
+        viewModels.forEach { viewModel in
+            let cardView = CardView(viewModel: viewModel)
+            deckView.addSubview(cardView)
+            cardView.fillSuperview()
+        }
     }
     
     private func configureUI() {
         view.backgroundColor = .systemBackground
+        topStack.delegate = self
         
         let stack = UIStackView(arrangedSubviews: [topStack, deckView, bottomStack])
         stack.axis = .vertical
@@ -117,3 +115,13 @@ class HomeViewController: UIViewController {
     }
 }
 
+extension HomeViewController: HomeNavigationStackViewProtocol {
+    func showSettings() {
+        let vc = SettingsTableViewController()
+        present(vc, animated: true)
+    }
+    
+    func showMessages() {
+        
+    }
+}
