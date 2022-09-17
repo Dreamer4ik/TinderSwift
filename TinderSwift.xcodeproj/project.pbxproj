@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1208F24BDAE33EB600D81E1D /* Pods_TinderSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA9B4A3043DC42431EFC6E9 /* Pods_TinderSwift.framework */; };
 		DF235D4428BFDCB200089DE3 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */; };
+		DF2AA37F28D5C21F00DC1F2F /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */; };
+		DF2AA38128D5C5FF00DC1F2F /* SettingsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */; };
 		DF2E6F9628C5F6DC00D1E334 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E6F9528C5F6DC00D1E334 /* User.swift */; };
 		DF2E6F9828C5FD7300D1E334 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E6F9728C5FD7300D1E334 /* CardViewModel.swift */; };
 		DF39845E28D33C050007A4BA /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF39845D28D33C050007A4BA /* SettingsTableViewController.swift */; };
@@ -19,6 +21,8 @@
 		DF470C4B28BFD85B00C2699A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF470C4928BFD85B00C2699A /* LaunchScreen.storyboard */; };
 		DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF470C5D28BFDBB100C2699A /* Extensions.swift */; };
 		DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4A424C28C0AE8200E06A85 /* BottomControlsStackView.swift */; };
+		DF4AC74028D4FD51009A8FA5 /* SecondTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AC73F28D4FD51009A8FA5 /* SecondTransitionViewController.swift */; };
+		DF4AC74328D4FDD6009A8FA5 /* confetti.json in Resources */ = {isa = PBXBuildFile; fileRef = DF4AC74228D4FDD6009A8FA5 /* confetti.json */; };
 		DF571B1728C7D5E80030BC64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF571B1628C7D5E80030BC64 /* LoginViewController.swift */; };
 		DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF571B1828C7D6140030BC64 /* RegistrationViewController.swift */; };
 		DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89789E28C1101E00E1DBD0 /* CardView.swift */; };
@@ -26,6 +30,8 @@
 		DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */; };
 		DFA64F1828CA524C00553ED6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1728CA524C00553ED6 /* CustomTextField.swift */; };
 		DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1928CA55BF00553ED6 /* AuthButton.swift */; };
+		DFCF229E28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */; };
+		DFE28CDC28D479B6005B7FB6 /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE28CDB28D479B6005B7FB6 /* SettingsHeader.swift */; };
 		DFEE559D28CFA4AB006FF3D8 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE559C28CFA4AB006FF3D8 /* TransitionViewController.swift */; };
 		DFEEC55B28CCF96100A2C140 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFEEC55A28CCF96100A2C140 /* GoogleService-Info.plist */; };
 		DFEEC55D28CD028300A2C140 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEEC55C28CD028300A2C140 /* AuthService.swift */; };
@@ -37,6 +43,8 @@
 		6FBF6B8E14DE2D4901297841 /* Pods-TinderSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderSwift.debug.xcconfig"; path = "Target Support Files/Pods-TinderSwift/Pods-TinderSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		DBEF034348AB9681EC008075 /* Pods-TinderSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderSwift.release.xcconfig"; path = "Target Support Files/Pods-TinderSwift/Pods-TinderSwift.release.xcconfig"; sourceTree = "<group>"; };
 		DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
+		DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
+		DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewModel.swift; sourceTree = "<group>"; };
 		DF2E6F9528C5F6DC00D1E334 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DF2E6F9728C5FD7300D1E334 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		DF39845D28D33C050007A4BA /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +57,8 @@
 		DF470C4C28BFD85B00C2699A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF470C5D28BFDBB100C2699A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DF4A424C28C0AE8200E06A85 /* BottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlsStackView.swift; sourceTree = "<group>"; };
+		DF4AC73F28D4FD51009A8FA5 /* SecondTransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTransitionViewController.swift; sourceTree = "<group>"; };
+		DF4AC74228D4FDD6009A8FA5 /* confetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confetti.json; sourceTree = "<group>"; };
 		DF571B1628C7D5E80030BC64 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DF571B1828C7D6140030BC64 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		DF89789E28C1101E00E1DBD0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -56,6 +66,8 @@
 		DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		DFA64F1728CA524C00553ED6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DFA64F1928CA55BF00553ED6 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		DFE28CDB28D479B6005B7FB6 /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
 		DFEE559C28CFA4AB006FF3D8 /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
 		DFEEC55A28CCF96100A2C140 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFEEC55C28CD028300A2C140 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -133,6 +145,8 @@
 				DF89789E28C1101E00E1DBD0 /* CardView.swift */,
 				DFA64F1728CA524C00553ED6 /* CustomTextField.swift */,
 				DFA64F1928CA55BF00553ED6 /* AuthButton.swift */,
+				DFE28CDB28D479B6005B7FB6 /* SettingsHeader.swift */,
+				DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,9 +173,10 @@
 			isa = PBXGroup;
 			children = (
 				DF571B1528C7D5B00030BC64 /* Auth */,
+				DF4AC74428D50A41009A8FA5 /* Transition */,
 				DF470C4228BFD85700C2699A /* HomeViewController.swift */,
 				DF39845D28D33C050007A4BA /* SettingsTableViewController.swift */,
-				DFEE559C28CFA4AB006FF3D8 /* TransitionViewController.swift */,
+				DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -171,6 +186,7 @@
 			children = (
 				DF2E6F9728C5FD7300D1E334 /* CardViewModel.swift */,
 				DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */,
+				DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -181,6 +197,23 @@
 				DF2E6F9528C5F6DC00D1E334 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DF4AC74128D4FDA0009A8FA5 /* AnimationLottie */ = {
+			isa = PBXGroup;
+			children = (
+				DF4AC74228D4FDD6009A8FA5 /* confetti.json */,
+			);
+			path = AnimationLottie;
+			sourceTree = "<group>";
+		};
+		DF4AC74428D50A41009A8FA5 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				DFEE559C28CFA4AB006FF3D8 /* TransitionViewController.swift */,
+				DF4AC73F28D4FD51009A8FA5 /* SecondTransitionViewController.swift */,
+			);
+			path = Transition;
 			sourceTree = "<group>";
 		};
 		DF571B1528C7D5B00030BC64 /* Auth */ = {
@@ -195,6 +228,7 @@
 		DF571B1A28C7D6C50030BC64 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DF4AC74128D4FDA0009A8FA5 /* AnimationLottie */,
 				DF470C3E28BFD85700C2699A /* AppDelegate.swift */,
 				DF470C4028BFD85700C2699A /* SceneDelegate.swift */,
 				DF470C4728BFD85B00C2699A /* Assets.xcassets */,
@@ -266,6 +300,7 @@
 				DF470C4B28BFD85B00C2699A /* LaunchScreen.storyboard in Resources */,
 				DF470C4828BFD85B00C2699A /* Assets.xcassets in Resources */,
 				DFEEC55B28CCF96100A2C140 /* GoogleService-Info.plist in Resources */,
+				DF4AC74328D4FDD6009A8FA5 /* confetti.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,11 +353,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2AA37F28D5C21F00DC1F2F /* CheckViewController.swift in Sources */,
 				DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */,
 				DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */,
 				DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */,
+				DF2AA38128D5C5FF00DC1F2F /* SettingsTableViewModel.swift in Sources */,
+				DF4AC74028D4FD51009A8FA5 /* SecondTransitionViewController.swift in Sources */,
 				DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */,
 				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,
+				DFCF229E28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift in Sources */,
+				DFE28CDC28D479B6005B7FB6 /* SettingsHeader.swift in Sources */,
 				DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */,
 				DF470C4328BFD85700C2699A /* HomeViewController.swift in Sources */,
 				DF2E6F9628C5F6DC00D1E334 /* User.swift in Sources */,

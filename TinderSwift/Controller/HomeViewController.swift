@@ -118,7 +118,9 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeNavigationStackViewProtocol {
     func showSettings() {
         let vc = SettingsTableViewController()
-        present(vc, animated: true)
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     
     func showMessages() {

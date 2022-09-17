@@ -28,10 +28,12 @@ class TransitionViewController: UIViewController {
     
     func transitionVC() {
         DispatchQueue.main.async {
-            let vc = HomeViewController()
+            let vc = SecondTransitionViewController()
             vc.modalPresentationStyle = .fullScreen
             vc.transitioningDelegate = self
-            self.present(vc, animated: true, completion: nil)
+            self.present(vc, animated: true) {
+                NotificationCenter.default.post(name: NSNotification.Name("Animation"), object: nil)
+            }
         }
     }
     
