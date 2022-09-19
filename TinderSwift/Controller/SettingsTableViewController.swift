@@ -9,11 +9,22 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     // MARK: - Properties
+    private let user: User
+    
     private let headerView = SettingsHeader()
     private let imagePicker = UIImagePickerController()
     private var imageIndex = 0
     
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
+    
+    init(user: User) {
+        self.user = user
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +58,7 @@ class SettingsTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         tableView.tableHeaderView = headerView
+        tableView.backgroundColor = .systemGroupedBackground
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
         headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 300)
     
@@ -68,7 +80,7 @@ extension SettingsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,6 +90,11 @@ extension SettingsTableViewController {
         ) as? SettingsTableViewCell else {
             preconditionFailure("Error SettingsTableViewCell")
         }
+        guard let section = SettingsSections(rawValue: indexPath.section) else {
+            preconditionFailure("Error SettingsTableViewCell section")
+        }
+        let viewModel = SettingsTableViewModel(user: user, section: section)
+        cell.viewModel = viewModel
         return cell
     }
 }
@@ -93,6 +110,13 @@ extension SettingsTableViewController {
             return nil
         }
         return section.description
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let section = SettingsSections(rawValue: indexPath.section) else {
+            return 0
+        }
+        return section == .ageRange ? 96 : 44
     }
 }
 
