@@ -7,13 +7,19 @@
 
 import UIKit
 
+protocol SettingsTableViewControllerDelegate: AnyObject {
+    func settingsController(_ controller: SettingsTableViewController, wantsToUpdate user: User)
+}
+
 class SettingsTableViewController: UITableViewController {
     // MARK: - Properties
-    private let user: User
+    private var user: User
     
     private let headerView = SettingsHeader()
     private let imagePicker = UIImagePickerController()
     private var imageIndex = 0
+    
+    weak var delegate: SettingsTableViewControllerDelegate?
     
     // MARK: - Lifecycle
     
@@ -38,7 +44,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @objc private func didTapDone() {
-        
+        view.endEditing(true)
+        delegate?.settingsController(self, wantsToUpdate: user)
     }
 
     // MARK: - Helpers
@@ -95,6 +102,7 @@ extension SettingsTableViewController {
         }
         let viewModel = SettingsTableViewModel(user: user, section: section)
         cell.viewModel = viewModel
+        cell.delegate = self
         return cell
     }
 }
@@ -137,4 +145,33 @@ extension SettingsTableViewController: UIImagePickerControllerDelegate, UINaviga
         
         dismiss(animated: true)
     }
+}
+// MARK: - SettingsTableViewCellDelegate
+extension SettingsTableViewController: SettingsTableViewCellDelegate {
+    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateAgeRangeWith sender: UISlider) {
+        if sender == cell.minAgeSlider {
+            user.minSeekingAge = Int(sender.value)
+        } else {
+            user.maxSeekingAge = Int(sender.value)
+        }
+    }
+    
+    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateUserWith value: String, for section: SettingsSections) {
+        switch section {
+        case .name:
+            user.name = value
+        case .profession:
+            user.profession = value
+        case .age:
+            user.age = Int(value) ?? user.age
+        case .bio:
+            user.bio = value
+        case .ageRange:
+            break
+        }
+        
+        print("User is: \(user)")
+    }
+    
+    
 }

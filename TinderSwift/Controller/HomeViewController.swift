@@ -115,12 +115,14 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - HomeNavigationStackViewProtocol
 extension HomeViewController: HomeNavigationStackViewProtocol {
     func showSettings() {
         guard let user = user else {
             return
         }
         let vc = SettingsTableViewController(user: user)
+        vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
@@ -128,5 +130,13 @@ extension HomeViewController: HomeNavigationStackViewProtocol {
     
     func showMessages() {
         
+    }
+}
+
+// MARK: - SettingsTableViewControllerDelegate
+extension HomeViewController: SettingsTableViewControllerDelegate {
+    func settingsController(_ controller: SettingsTableViewController, wantsToUpdate user: User) {
+        controller.dismiss(animated: true)
+        self.user = user
     }
 }

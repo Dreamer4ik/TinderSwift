@@ -14,8 +14,8 @@ struct User {
     let uid: String
     let profileImageUrl: String
     var profession: String
-    var minSeekingAge: Int = 18
-    var maxSeekingAge: Int = 60
+    var minSeekingAge: Int
+    var maxSeekingAge: Int
     var bio: String
     
     init(dictionary: [String: Any]) {
@@ -26,7 +26,7 @@ struct User {
         self.uid = dictionary["uid"] as? String ?? ""
         self.profession = dictionary["profession"] as? String ?? ""
         self.minSeekingAge = dictionary["minSeekingAge"] as? Int ?? 18
-        self.maxSeekingAge = dictionary["maxSeekingAge"] as? Int ?? 60
+        self.maxSeekingAge = dictionary["maxSeekingAge"] as? Int ?? 65
         self.bio = dictionary["bio"] as? String ?? ""
     }
 }

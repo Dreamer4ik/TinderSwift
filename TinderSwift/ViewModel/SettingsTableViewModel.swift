@@ -33,7 +33,7 @@ enum SettingsSections: Int, CaseIterable {
 struct SettingsTableViewModel {
     
     private let user: User
-    private let section: SettingsSections
+    let section: SettingsSections
     
     let placeholderText: String
     var value: String?
@@ -44,6 +44,22 @@ struct SettingsTableViewModel {
     
     var shouldHideSlider: Bool {
         return section != .ageRange
+    }
+    
+    var minAgeSliderValue: Float {
+        return Float(user.minSeekingAge)
+    }
+    
+    var maxAgeSliderValue: Float {
+        return Float(user.maxSeekingAge)
+    }
+    
+    func minAgeLabelText(forValue value: Float) -> String {
+        return "Min: \(Int(value))"
+    }
+    
+    func maxAgeLabelText(forValue value: Float) -> String {
+        return "Max: \(Int(value))"
     }
     
     init(user: User, section: SettingsSections) {

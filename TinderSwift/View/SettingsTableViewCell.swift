@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol SettingsTableViewCellDelegate: AnyObject {
+    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateUserWith value: String, for section: SettingsSections)
+    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateAgeRangeWith sender: UISlider)
+}
+
 class SettingsTableViewCell: UITableViewCell {
     // MARK: - Properties
+    weak var delegate: SettingsTableViewCellDelegate?
     static let identifier = "SettingsTableViewCell"
     var viewModel: SettingsTableViewModel! {
         didSet {
@@ -39,10 +45,9 @@ class SettingsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
         minAgeSlider = createAgeRangeSlider()
         maxAgeSlider = createAgeRangeSlider()
-        minAgeLabel.text = "Min: 18"
-        maxAgeLabel.text = "Max: 65"
         
         contentView.addSubview(inputField)
         inputField.fillSuperview()
@@ -59,6 +64,8 @@ class SettingsTableViewCell: UITableViewCell {
         contentView.addSubview(sliderStack)
         sliderStack.centerY(inView: self)
         sliderStack.anchor(left: leftAnchor, right: rightAnchor, paddingLeft: 24, paddingRight: 24)
+        
+        inputField.addTarget(self, action: #selector(fieldEndEditing), for: .editingDidEnd)
     }
     
     required init?(coder: NSCoder) {
@@ -66,15 +73,28 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     // MARK: - Actions
-    @objc private func ageRangeCnanged() {
-        
+    @objc private func ageRangeCnanged(sender: UISlider) {
+        if sender == minAgeSlider {
+            minAgeLabel.text = viewModel.minAgeLabelText(forValue: sender.value)
+        }
+        else {
+            maxAgeLabel.text = viewModel.maxAgeLabelText(forValue: sender.value)
+        }
+        delegate?.settingsCell(self, wantsToUpdateAgeRangeWith: sender)
+    }
+    
+    @objc private func fieldEndEditing(sender: UITextField) {
+        guard let value = sender.text else {
+            return
+        }
+        delegate?.settingsCell(self, wantsToUpdateUserWith: value, for: viewModel.section)
     }
     
     // MARK: - Helpers
     private func createAgeRangeSlider() -> UISlider {
         let slider = UISlider()
-        slider.maximumValue = 18
-        slider.maximumValue = 60
+        slider.minimumValue = 18
+        slider.maximumValue = 65
         slider.addTarget(self, action: #selector(ageRangeCnanged), for: .valueChanged)
         return slider
     }
@@ -85,5 +105,11 @@ class SettingsTableViewCell: UITableViewCell {
         
         inputField.placeholder = viewModel.placeholderText
         inputField.text = viewModel.value
+        
+        minAgeLabel.text = viewModel.minAgeLabelText(forValue: viewModel.minAgeSliderValue)
+        maxAgeLabel.text = viewModel.maxAgeLabelText(forValue: viewModel.maxAgeSliderValue)
+        
+        minAgeSlider.setValue(viewModel.minAgeSliderValue, animated: true)
+        maxAgeSlider.setValue(viewModel.maxAgeSliderValue, animated: true)
     }
 }
