@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RangeSeekSlider
 
 protocol SettingsTableViewControllerDelegate: AnyObject {
     func settingsController(_ controller: SettingsTableViewController, wantsToUpdate user: User)
@@ -103,6 +104,7 @@ extension SettingsTableViewController {
         let viewModel = SettingsTableViewModel(user: user, section: section)
         cell.viewModel = viewModel
         cell.delegate = self
+        cell.rangeSlider.delegate = self
         return cell
     }
 }
@@ -148,12 +150,8 @@ extension SettingsTableViewController: UIImagePickerControllerDelegate, UINaviga
 }
 // MARK: - SettingsTableViewCellDelegate
 extension SettingsTableViewController: SettingsTableViewCellDelegate {
-    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateAgeRangeWith sender: UISlider) {
-        if sender == cell.minAgeSlider {
-            user.minSeekingAge = Int(sender.value)
-        } else {
-            user.maxSeekingAge = Int(sender.value)
-        }
+    func settingsCellLabel(_ cell: SettingsTableViewCell, wantsToUpdateAgeRangeWith slider: RangeSeekSlider) {
+        
     }
     
     func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateUserWith value: String, for section: SettingsSections) {
@@ -172,6 +170,12 @@ extension SettingsTableViewController: SettingsTableViewCellDelegate {
         
         print("User is: \(user)")
     }
-    
-    
+}
+
+// MARK: - RangeSeekSliderDelegate
+extension SettingsTableViewController: RangeSeekSliderDelegate {
+    func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
+        user.minSeekingAge = Int(roundf(Float(minValue)))
+        user.maxSeekingAge = Int(roundf(Float(maxValue)))
+    }
 }

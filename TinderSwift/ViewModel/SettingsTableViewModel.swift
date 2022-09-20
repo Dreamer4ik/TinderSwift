@@ -46,20 +46,26 @@ struct SettingsTableViewModel {
         return section != .ageRange
     }
     
-    var minAgeSliderValue: Float {
-        return Float(user.minSeekingAge)
+    var shouldHideAgeLabel: Bool {
+        return section != .ageRange
     }
     
-    var maxAgeSliderValue: Float {
-        return Float(user.maxSeekingAge)
+    var shouldHideRangeLabel: Bool {
+        return section != .ageRange
     }
     
-    func minAgeLabelText(forValue value: Float) -> String {
-        return "Min: \(Int(value))"
+    var minAgeSliderValue: CGFloat {
+        return CGFloat(user.minSeekingAge)
     }
     
-    func maxAgeLabelText(forValue value: Float) -> String {
-        return "Max: \(Int(value))"
+    var maxAgeSliderValue: CGFloat {
+        return CGFloat(user.maxSeekingAge)
+    }
+    
+    func rangeAgeLabelText(forValue valueMin: CGFloat, forValue valueMax: CGFloat) -> String {
+        let minString = Int(roundf(Float(valueMin)))
+        let maxString = Int(roundf(Float(valueMax)))
+        return "\(minString) - \(maxString)"
     }
     
     init(user: User, section: SettingsSections) {

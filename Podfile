@@ -16,5 +16,7 @@ target 'TinderSwift' do
   pod 'JGProgressHUD'
   pod 'MTTransitions'
   pod 'lottie-ios'
+  pod 'RangeSeekSlider'
+
 
 end
