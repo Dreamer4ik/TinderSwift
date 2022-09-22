@@ -12,7 +12,7 @@ struct User {
     var age: Int
     var email: String
     let uid: String
-    let profileImageUrl: String
+    var imageURLs: [String]
     var profession: String
     var minSeekingAge: Int
     var maxSeekingAge: Int
@@ -22,7 +22,7 @@ struct User {
         self.name = dictionary["fullname"] as? String ?? ""
         self.age = dictionary["age"] as? Int ?? 0
         self.email = dictionary["email"] as? String ?? ""
-        self.profileImageUrl = dictionary["imageUrl"] as? String ?? ""
+        self.imageURLs = dictionary["imageURLs"] as? [String] ?? [String]()
         self.uid = dictionary["uid"] as? String ?? ""
         self.profession = dictionary["profession"] as? String ?? ""
         self.minSeekingAge = dictionary["minSeekingAge"] as? Int ?? 18

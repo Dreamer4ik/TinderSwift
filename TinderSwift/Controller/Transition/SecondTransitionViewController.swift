@@ -33,10 +33,10 @@ class SecondTransitionViewController: UIViewController {
         animationView.backgroundColor = .white
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .playOnce
-        animationView.play { finished in
+        animationView.play { [weak self] _ in
             let vc = HomeViewController()
             vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            self?.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -47,9 +47,19 @@ class SecondTransitionViewController: UIViewController {
         let animator = UIViewPropertyAnimator(duration: 0.7, curve: .linear) {
             self.iconImageView.frame = self.iconImageView.frame.offsetBy(dx:25, dy:0)
         }
-        animator.addCompletion { [weak self] finished  in
+        
+        let animator2 = UIViewPropertyAnimator(duration: 0.5, curve: .easeIn) {
+            self.iconImageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        }
+        
+        animator.addCompletion { _ in
+            animator2.startAnimation()
+        }
+        
+        animator2.addCompletion { [weak self] _ in
             self?.animationView.stop()
         }
+        
         animator.startAnimation()
         
     }
@@ -61,6 +71,8 @@ class SecondTransitionViewController: UIViewController {
     
     @objc private func startAnimation() {
         setupLottieAnimation()
-        setupAnimationIcon()
+        if animationView.isAnimationPlaying {
+            setupAnimationIcon()
+        }
     }
 }

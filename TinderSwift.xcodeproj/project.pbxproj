@@ -28,6 +28,7 @@
 		DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89789E28C1101E00E1DBD0 /* CardView.swift */; };
 		DF8BEAD228D0A492003691C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BEAD128D0A492003691C1 /* Constants.swift */; };
 		DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */; };
+		DFA4958F28DCA35C005B0B2B /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */; };
 		DFA64F1828CA524C00553ED6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1728CA524C00553ED6 /* CustomTextField.swift */; };
 		DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1928CA55BF00553ED6 /* AuthButton.swift */; };
 		DFCF229E28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */; };
@@ -64,6 +65,7 @@
 		DF89789E28C1101E00E1DBD0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DF8BEAD128D0A492003691C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
 		DFA64F1728CA524C00553ED6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DFA64F1928CA55BF00553ED6 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -140,13 +142,12 @@
 		DF470C5528BFD8B200C2699A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DFA4958D28DCA33A005B0B2B /* Settings */,
 				DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */,
 				DF4A424C28C0AE8200E06A85 /* BottomControlsStackView.swift */,
 				DF89789E28C1101E00E1DBD0 /* CardView.swift */,
 				DFA64F1728CA524C00553ED6 /* CustomTextField.swift */,
 				DFA64F1928CA55BF00553ED6 /* AuthButton.swift */,
-				DFE28CDB28D479B6005B7FB6 /* SettingsHeader.swift */,
-				DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -235,6 +236,16 @@
 				DFEEC55A28CCF96100A2C140 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DFA4958D28DCA33A005B0B2B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DFE28CDB28D479B6005B7FB6 /* SettingsHeader.swift */,
+				DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */,
+				DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +369,7 @@
 				DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */,
 				DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */,
 				DF2AA38128D5C5FF00DC1F2F /* SettingsTableViewModel.swift in Sources */,
+				DFA4958F28DCA35C005B0B2B /* SettingsFooter.swift in Sources */,
 				DF4AC74028D4FD51009A8FA5 /* SecondTransitionViewController.swift in Sources */,
 				DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */,
 				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,

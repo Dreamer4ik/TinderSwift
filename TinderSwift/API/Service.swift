@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseStorage
+import Firebase
 
 struct Service {
     
@@ -34,6 +35,21 @@ struct Service {
                 }
             })
         }
+    }
+    
+    static func saveUserData(user: User, completion: @escaping(Error?) -> Void) {
+        let data = [
+            "fullname": user.name,
+            "imageURLs": user.imageURLs,
+            "uid": user.uid,
+            "age": user.age,
+            "bio": user.bio,
+            "profession": user.profession,
+            "minSeekingAge": user.minSeekingAge,
+            "maxSeekingAge": user.maxSeekingAge
+        ] as [String : Any]
+        
+        COLLECTION_USERS.document(user.uid).setData(data,completion: completion)
     }
     
     static func uploadImage(image: UIImage, completion: @escaping(String) -> Void) {

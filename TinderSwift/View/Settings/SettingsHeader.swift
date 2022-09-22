@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol SettingsHeaderDelegate: AnyObject {
     func settingsHeader(_ header: SettingsHeader, didSelect index: Int)
@@ -15,14 +16,17 @@ class SettingsHeader: UIView {
     
     // MARK: - Properties
     weak var delegate: SettingsHeaderDelegate?
+    
+    private let user: User
     var buttons = [UIButton]()
     private var button1 = UIButton()
     private var button2 = UIButton()
     private var button3 = UIButton()
 
     // MARK: - Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(user: User) {
+        self.user = user
+        super.init(frame: .zero)
         backgroundColor = .systemGroupedBackground
         
         button1 = createButton(0)
@@ -45,6 +49,7 @@ class SettingsHeader: UIView {
         addSubview(stack)
         stack.anchor(top: topAnchor, left: button1.rightAnchor, bottom: bottomAnchor,
                      right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 16, paddingRight: 16)
+        loadUserPhotos()
     }
     
     required init?(coder: NSCoder) {
@@ -57,6 +62,19 @@ class SettingsHeader: UIView {
     }
     
     // MARK: - Helpers
+    
+    func loadUserPhotos() {
+        let imageURLs = user.imageURLs.map({
+            URL(string: $0)
+        })
+        for (index, url) in imageURLs.enumerated() {
+            SDWebImageManager.shared.loadImage(with: url,options: .continueInBackground,
+                                               progress: nil) { image, _, _, _, _, _ in
+                self.buttons[index].setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+            }
+        }
+    }
+    
     private func createButton(_ index: Int) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle("Select Photo", for: .normal)

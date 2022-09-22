@@ -36,7 +36,6 @@ class HomeViewController: UIViewController {
         configureUI()
         fetchUsers()
         fetchUser()
-//        logOut()
     }
     
     // MARK: - API
@@ -135,6 +134,11 @@ extension HomeViewController: HomeNavigationStackViewProtocol {
 
 // MARK: - SettingsTableViewControllerDelegate
 extension HomeViewController: SettingsTableViewControllerDelegate {
+    func settingsControllerWantsToLogOut(_ controller: SettingsTableViewController) {
+        controller.dismiss(animated: true)
+        logOut()
+    }
+    
     func settingsController(_ controller: SettingsTableViewController, wantsToUpdate user: User) {
         controller.dismiss(animated: true)
         self.user = user

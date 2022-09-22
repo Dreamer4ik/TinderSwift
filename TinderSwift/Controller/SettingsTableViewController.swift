@@ -7,16 +7,19 @@
 
 import UIKit
 import RangeSeekSlider
+import JGProgressHUD
 
 protocol SettingsTableViewControllerDelegate: AnyObject {
     func settingsController(_ controller: SettingsTableViewController, wantsToUpdate user: User)
+    func settingsControllerWantsToLogOut(_ controller: SettingsTableViewController)
 }
 
 class SettingsTableViewController: UITableViewController {
     // MARK: - Properties
     private var user: User
     
-    private let headerView = SettingsHeader()
+    private var headerView: SettingsHeader
+    private var footerView = SettingsFooter()
     private let imagePicker = UIImagePickerController()
     private var imageIndex = 0
     
@@ -26,6 +29,7 @@ class SettingsTableViewController: UITableViewController {
     
     init(user: User) {
         self.user = user
+        self.headerView = SettingsHeader(user: user)
         super.init(style: .plain)
     }
     
@@ -46,9 +50,26 @@ class SettingsTableViewController: UITableViewController {
     
     @objc private func didTapDone() {
         view.endEditing(true)
-        delegate?.settingsController(self, wantsToUpdate: user)
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Saving Your Data"
+        hud.show(in: view)
+        Service.saveUserData(user: user) { error in
+            self.delegate?.settingsController(self, wantsToUpdate: self.user)
+        }
     }
 
+    // MARK: - API
+    private func uploadImage(image: UIImage) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Saving Image"
+        hud.show(in: view)
+        
+        Service.uploadImage(image: image) { imageUrl in
+            self.user.imageURLs.append(imageUrl)
+            hud.dismiss()
+        }
+    }
+    
     // MARK: - Helpers
     
     private func setHeaderImage(_ image: UIImage?) {
@@ -66,11 +87,14 @@ class SettingsTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         tableView.tableHeaderView = headerView
+        tableView.tableFooterView = footerView
         tableView.backgroundColor = .systemGroupedBackground
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
         headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 300)
+        footerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 88)
     
         headerView.delegate = self
+        footerView.delegate = self
         imagePicker.delegate = self
     }
 
@@ -141,8 +165,11 @@ extension SettingsTableViewController: SettingsHeaderDelegate {
 // MARK: - UIImagePickerControllerDelegate
 extension SettingsTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let selectedImage = info[.originalImage] as? UIImage
-        // have to figure out how to update photo
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            return
+        }
+        
+        uploadImage(image: selectedImage)
         setHeaderImage(selectedImage)
         
         dismiss(animated: true)
@@ -177,5 +204,11 @@ extension SettingsTableViewController: RangeSeekSliderDelegate {
     func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
         user.minSeekingAge = Int(roundf(Float(minValue)))
         user.maxSeekingAge = Int(roundf(Float(maxValue)))
+    }
+}
+
+extension SettingsTableViewController: SettingsFooterDelegate {
+    func logOut() {
+        delegate?.settingsControllerWantsToLogOut(self)
     }
 }
