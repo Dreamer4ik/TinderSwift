@@ -25,6 +25,8 @@
 		DF4AC74328D4FDD6009A8FA5 /* confetti.json in Resources */ = {isa = PBXBuildFile; fileRef = DF4AC74228D4FDD6009A8FA5 /* confetti.json */; };
 		DF571B1728C7D5E80030BC64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF571B1628C7D5E80030BC64 /* LoginViewController.swift */; };
 		DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF571B1828C7D6140030BC64 /* RegistrationViewController.swift */; };
+		DF861E0428E067B8000403FB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF861E0328E067B8000403FB /* ProfileViewController.swift */; };
+		DF861E0828E07737000403FB /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF861E0728E07737000403FB /* ProfileCollectionViewCell.swift */; };
 		DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89789E28C1101E00E1DBD0 /* CardView.swift */; };
 		DF8BEAD228D0A492003691C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BEAD128D0A492003691C1 /* Constants.swift */; };
 		DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */; };
@@ -62,6 +64,8 @@
 		DF4AC74228D4FDD6009A8FA5 /* confetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confetti.json; sourceTree = "<group>"; };
 		DF571B1628C7D5E80030BC64 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DF571B1828C7D6140030BC64 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		DF861E0328E067B8000403FB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DF861E0728E07737000403FB /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF89789E28C1101E00E1DBD0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DF8BEAD128D0A492003691C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -142,9 +146,9 @@
 		DF470C5528BFD8B200C2699A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF861E0528E07704000403FB /* Home */,
+				DF861E0628E07710000403FB /* Profile */,
 				DFA4958D28DCA33A005B0B2B /* Settings */,
-				DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */,
-				DF4A424C28C0AE8200E06A85 /* BottomControlsStackView.swift */,
 				DF89789E28C1101E00E1DBD0 /* CardView.swift */,
 				DFA64F1728CA524C00553ED6 /* CustomTextField.swift */,
 				DFA64F1928CA55BF00553ED6 /* AuthButton.swift */,
@@ -176,6 +180,7 @@
 				DF571B1528C7D5B00030BC64 /* Auth */,
 				DF4AC74428D50A41009A8FA5 /* Transition */,
 				DF470C4228BFD85700C2699A /* HomeViewController.swift */,
+				DF861E0328E067B8000403FB /* ProfileViewController.swift */,
 				DF39845D28D33C050007A4BA /* SettingsTableViewController.swift */,
 				DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */,
 			);
@@ -236,6 +241,23 @@
 				DFEEC55A28CCF96100A2C140 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DF861E0528E07704000403FB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */,
+				DF4A424C28C0AE8200E06A85 /* BottomControlsStackView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DF861E0628E07710000403FB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DF861E0728E07737000403FB /* ProfileCollectionViewCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		DFA4958D28DCA33A005B0B2B /* Settings */ = {
@@ -374,6 +396,7 @@
 				DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */,
 				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,
 				DFCF229E28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift in Sources */,
+				DF861E0428E067B8000403FB /* ProfileViewController.swift in Sources */,
 				DFE28CDC28D479B6005B7FB6 /* SettingsHeader.swift in Sources */,
 				DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */,
 				DF470C4328BFD85700C2699A /* HomeViewController.swift in Sources */,
@@ -382,6 +405,7 @@
 				DFEEC55F28CD028D00A2C140 /* Service.swift in Sources */,
 				DF470C3F28BFD85700C2699A /* AppDelegate.swift in Sources */,
 				DFEE559D28CFA4AB006FF3D8 /* TransitionViewController.swift in Sources */,
+				DF861E0828E07737000403FB /* ProfileCollectionViewCell.swift in Sources */,
 				DFA64F1828CA524C00553ED6 /* CustomTextField.swift in Sources */,
 				DF470C4128BFD85700C2699A /* SceneDelegate.swift in Sources */,
 				DFEEC55D28CD028300A2C140 /* AuthService.swift in Sources */,

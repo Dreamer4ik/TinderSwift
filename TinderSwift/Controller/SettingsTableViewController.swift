@@ -65,7 +65,11 @@ class SettingsTableViewController: UITableViewController {
         hud.show(in: view)
         
         Service.uploadImage(image: image) { imageUrl in
-            self.user.imageURLs.append(imageUrl)
+            if self.user.imageURLs.count < self.headerView.buttons.count {
+                self.user.imageURLs.append(imageUrl)
+            } else {
+                self.user.imageURLs[self.imageIndex] = imageUrl
+            }
             hud.dismiss()
         }
     }

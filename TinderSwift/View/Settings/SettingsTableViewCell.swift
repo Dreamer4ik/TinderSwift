@@ -16,7 +16,9 @@ protocol SettingsTableViewCellDelegate: AnyObject {
 class SettingsTableViewCell: UITableViewCell {
     // MARK: - Properties
     weak var delegate: SettingsTableViewCellDelegate?
+    
     static let identifier = "SettingsTableViewCell"
+    
     var viewModel: SettingsTableViewModel! {
         didSet {
             configure()
