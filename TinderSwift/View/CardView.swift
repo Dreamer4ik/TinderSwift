@@ -23,7 +23,7 @@ class CardView: UIView {
     weak var delegate: CardViewDelegate?
     
     private let gradientLayer = CAGradientLayer()
-    private let barStackView = UIStackView()
+    private var barStackView: SegmentedBarView?
     private let viewModel: CardViewModel
     
     private let imageView: UIImageView = {
@@ -102,9 +102,9 @@ class CardView: UIView {
         layer.cornerRadius = 10
         clipsToBounds = true
         
-        imageView.fillSuperview() // or in layoutSubviews imageView.frame = bounds
-        
+        barStackView = SegmentedBarView(numberOfSegments: viewModel.imageURLs.count)
         addSubviews()
+        imageView.fillSuperview() // or in layoutSubviews imageView.frame = bounds
         
         infoLabel.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor,
                          paddingLeft: 16, paddingBottom: 16, paddingRight: 16)
@@ -207,14 +207,11 @@ class CardView: UIView {
         }
         
         imageView.sd_setImage(with: viewModel.imageUrl)
-        barStackView.arrangedSubviews.forEach({
-            $0.backgroundColor = .barDeselectedColor
-        })
-        barStackView.arrangedSubviews[viewModel.index].backgroundColor = .white
+        barStackView?.setHighlighted(index: viewModel.index)
     }
     
     // MARK: - Helpers
-    func panCard(sender: UIPanGestureRecognizer) {
+    private func panCard(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: nil)
         let degrees: CGFloat = translation.x / 20
         let angle = -degrees * .pi / 180
@@ -223,7 +220,7 @@ class CardView: UIView {
         showLabelWithFeel(sender: sender)
     }
     
-    func showLabelWithFeel(sender: UIPanGestureRecognizer) {
+    private func showLabelWithFeel(sender: UIPanGestureRecognizer) {
         let direction = sender.translation(in: nil).x
         let directionForTop = sender.translation(in: nil).y
         
@@ -247,7 +244,7 @@ class CardView: UIView {
         }
     }
     
-    func resetCardPosition(sender: UIPanGestureRecognizer) {
+    private func resetCardPosition(sender: UIPanGestureRecognizer) {
         let direction: SwipeDirection = sender.translation(in: nil).x > 100 ? .right : .left
         let shouldDismissCard = abs(sender.translation(in: nil).x) > 150
         
@@ -281,29 +278,21 @@ class CardView: UIView {
         
     }
     
-    func configureBarStackView() {
-        (0..<viewModel.imageURLs.count).forEach({ _ in
-            let barView = UIView()
-            barView.backgroundColor = .barDeselectedColor
-            barStackView.addArrangedSubview(barView)
-        })
-        
-        barStackView.arrangedSubviews.first?.backgroundColor = .white
-        addSubview(barStackView)
-        barStackView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor,
-                            paddingTop: 8, paddingLeft: 8, paddingRight: 8, height: 4)
-        
-        barStackView.spacing = 4
-        barStackView.distribution = .fillEqually
+    private func configureBarStackView() {
+        if let stack = barStackView {
+            addSubview(stack)
+        }
+        barStackView?.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor,
+                             paddingTop: 8, paddingLeft: 8, paddingRight: 8, height: 4)
     }
     
-    func configureGradientLayer() {
+    private func configureGradientLayer() {
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradientLayer.locations = [0.5, 1.1]
         layer.addSublayer(gradientLayer)
     }
     
-    func configureGestureRecognizers() {
+    private func configureGestureRecognizers() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         addGestureRecognizer(pan)
         

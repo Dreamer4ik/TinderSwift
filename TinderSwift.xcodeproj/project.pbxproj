@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1208F24BDAE33EB600D81E1D /* Pods_TinderSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA9B4A3043DC42431EFC6E9 /* Pods_TinderSwift.framework */; };
+		DF0AE44928E1AED200DC5DC0 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0AE44828E1AED200DC5DC0 /* ProfileViewModel.swift */; };
+		DF0AE44B28E1BA6200DC5DC0 /* SegmentedBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0AE44A28E1BA6200DC5DC0 /* SegmentedBarView.swift */; };
 		DF235D4428BFDCB200089DE3 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */; };
 		DF2AA37F28D5C21F00DC1F2F /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */; };
 		DF2AA38128D5C5FF00DC1F2F /* SettingsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */; };
@@ -45,6 +47,8 @@
 		3CA9B4A3043DC42431EFC6E9 /* Pods_TinderSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FBF6B8E14DE2D4901297841 /* Pods-TinderSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderSwift.debug.xcconfig"; path = "Target Support Files/Pods-TinderSwift/Pods-TinderSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		DBEF034348AB9681EC008075 /* Pods-TinderSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderSwift.release.xcconfig"; path = "Target Support Files/Pods-TinderSwift/Pods-TinderSwift.release.xcconfig"; sourceTree = "<group>"; };
+		DF0AE44828E1AED200DC5DC0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		DF0AE44A28E1BA6200DC5DC0 /* SegmentedBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedBarView.swift; sourceTree = "<group>"; };
 		DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
 		DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				DF89789E28C1101E00E1DBD0 /* CardView.swift */,
 				DFA64F1728CA524C00553ED6 /* CustomTextField.swift */,
 				DFA64F1928CA55BF00553ED6 /* AuthButton.swift */,
+				DF0AE44A28E1BA6200DC5DC0 /* SegmentedBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				DF2E6F9728C5FD7300D1E334 /* CardViewModel.swift */,
 				DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */,
 				DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */,
+				DF0AE44828E1AED200DC5DC0 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -392,6 +398,7 @@
 				DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */,
 				DF2AA38128D5C5FF00DC1F2F /* SettingsTableViewModel.swift in Sources */,
 				DFA4958F28DCA35C005B0B2B /* SettingsFooter.swift in Sources */,
+				DF0AE44928E1AED200DC5DC0 /* ProfileViewModel.swift in Sources */,
 				DF4AC74028D4FD51009A8FA5 /* SecondTransitionViewController.swift in Sources */,
 				DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */,
 				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,
@@ -413,6 +420,7 @@
 				DF39845E28D33C050007A4BA /* SettingsTableViewController.swift in Sources */,
 				DF2E6F9828C5FD7300D1E334 /* CardViewModel.swift in Sources */,
 				DF8BEAD228D0A492003691C1 /* Constants.swift in Sources */,
+				DF0AE44B28E1BA6200DC5DC0 /* SegmentedBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
