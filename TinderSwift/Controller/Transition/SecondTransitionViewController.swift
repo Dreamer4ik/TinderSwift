@@ -49,7 +49,7 @@ class SecondTransitionViewController: UIViewController {
         }
         
         let animator2 = UIViewPropertyAnimator(duration: 0.5, curve: .easeIn) {
-            self.iconImageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            self.iconImageView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
         }
         
         animator.addCompletion { _ in

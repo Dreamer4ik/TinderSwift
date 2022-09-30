@@ -174,6 +174,18 @@ class CardView: UIView {
         
     }
     
+    func configureCardViewLabel(direction: SwipeDirection) {
+        switch direction {
+        case .left:
+            nopeLabel.isHidden = false
+        case .right:
+            likeLabel.isHidden = false
+        case .top:
+            superLikeLabel.isHidden = false
+        }
+    
+}
+    
     // MARK: - Actions
     
     @objc private func didTapInfoButton() {

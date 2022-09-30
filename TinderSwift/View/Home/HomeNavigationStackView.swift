@@ -42,7 +42,7 @@ class HomeNavigationStackView: UIStackView {
         layoutMargins = .init(top: 0, left: 16, bottom: 0, right: 16)
         
         settingsButton.addTarget(self, action: #selector(didTapSettings), for: .touchUpInside)
-        settingsButton.addTarget(self, action: #selector(didTapMessage), for: .touchUpInside)
+        messageButton.addTarget(self, action: #selector(didTapMessage), for: .touchUpInside)
     }
     
     required init(coder: NSCoder) {
@@ -50,10 +50,10 @@ class HomeNavigationStackView: UIStackView {
     }
     
     @objc private func didTapSettings() {
-        delegate?.showMessages()
+        delegate?.showSettings()
     }
     
     @objc private func didTapMessage() {
-        delegate?.showSettings()
+        delegate?.showMessages()
     }
 }

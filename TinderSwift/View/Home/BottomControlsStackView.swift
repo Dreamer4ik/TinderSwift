@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol BottomControlsStackViewDelegate: AnyObject {
+    func tapLikeButton()
+    func tapDislikeButton()
+    func tapSuperLikeButton()
+    func tapRevertButton()
+}
+
 class BottomControlsStackView: UIStackView {
     
     // MARK: - Properties
+    weak var delegate: BottomControlsStackViewDelegate?
     
     let revertButton = UIButton(type: .system)
     let dislikeButton = UIButton(type: .system)
@@ -34,9 +42,31 @@ class BottomControlsStackView: UIStackView {
         [revertButton, dislikeButton, superLikeButton, likeButton, boostButton].forEach { view in
             addArrangedSubview(view)
         }
+        
+        likeButton.addTarget(self, action: #selector(didTapLikeButton), for: .touchUpInside)
+        dislikeButton.addTarget(self, action: #selector(didTapDislikeButton), for: .touchUpInside)
+        superLikeButton.addTarget(self, action: #selector(didTapSuperLikeButton), for: .touchUpInside)
+        revertButton.addTarget(self, action: #selector(didTapRevertButton), for: .touchUpInside)
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    @objc private func didTapLikeButton() {
+        delegate?.tapLikeButton()
+    }
+    
+    @objc private func didTapDislikeButton() {
+        delegate?.tapDislikeButton()
+    }
+    
+    @objc private func didTapSuperLikeButton() {
+        delegate?.tapSuperLikeButton()
+    }
+    
+    @objc private func didTapRevertButton() {
+        delegate?.tapRevertButton()
     }
 }

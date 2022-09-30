@@ -17,6 +17,7 @@ target 'TinderSwift' do
   pod 'MTTransitions'
   pod 'lottie-ios'
   pod 'RangeSeekSlider'
+  pod 'Pulsator'
 
 
 end

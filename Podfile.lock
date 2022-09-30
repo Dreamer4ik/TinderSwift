@@ -362,6 +362,7 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - Pulsator (0.6.0)
   - RangeSeekSlider (1.8.0)
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
@@ -376,6 +377,7 @@ DEPENDENCIES:
   - JGProgressHUD
   - lottie-ios
   - MTTransitions
+  - Pulsator
   - RangeSeekSlider
   - SDWebImage
 
@@ -404,6 +406,7 @@ SPEC REPOS:
     - MTTransitions
     - nanopb
     - PromisesObjC
+    - Pulsator
     - RangeSeekSlider
     - SDWebImage
 
@@ -431,9 +434,10 @@ SPEC CHECKSUMS:
   MTTransitions: 4278dc33bbeb23c15391c47273754f748541f2a4
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  Pulsator: eb5a9f9be4bdcbd19903984c65deca6aabe50a17
   RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
 
-PODFILE CHECKSUM: 3d453f27865ab86a456e9ced5dfb6dab00cb05ad
+PODFILE CHECKSUM: 00f5c67a05eab81dac25bab3855c1a5571f069b4
 
 COCOAPODS: 1.11.2
