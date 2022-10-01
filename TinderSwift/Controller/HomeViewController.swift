@@ -235,7 +235,6 @@ class HomeViewController: UIViewController {
             topCard.transform = offScreenTransform
             
         } completion: { _ in
-            NotificationCenter.default.post(name: NSNotification.Name("HideSuperLike"), object: nil)
             self.topCardView?.removeFromSuperview()
             self.counter += 1
             guard !self.cardViews.isEmpty else {
@@ -283,8 +282,23 @@ extension HomeViewController: SettingsTableViewControllerDelegate {
 }
 // MARK: - CardViewDelegate
 extension HomeViewController: CardViewDelegate {
+    func cardView(_ view: CardView, didSwipe: Int) {
+        view.removeFromSuperview()
+        self.cardViews.removeAll(where: {
+            view == $0
+        })
+        
+        guard let user = topCardView?.viewModel.user else {
+            return
+        }
+        
+        Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: didSwipe))
+        self.topCardView = cardViews.last
+    }
+    
     func cardView(_ view: CardView, wantsToShowProfileFor user: User) {
         let vc = ProfileViewController(user: user)
+        vc.delegate = self
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
@@ -298,6 +312,7 @@ extension HomeViewController: BottomControlsStackViewDelegate {
         }
         
         performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: true, count: counter)
+        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 1))
     }
     
     func tapDislikeButton() {
@@ -305,6 +320,7 @@ extension HomeViewController: BottomControlsStackViewDelegate {
             return
         }
         performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: false, count: counter)
+        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 0))
     }
     
     func tapSuperLikeButton() {
@@ -312,9 +328,43 @@ extension HomeViewController: BottomControlsStackViewDelegate {
             return
         }
         performSwipeAnimationSuperLike(topCard: topCard)
+        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 3))
     }
     
     func tapRevertButton() {
         
+    }
+}
+
+// MARK: - ProfileViewControllerDelegate
+extension HomeViewController: ProfileViewControllerDelegate {
+    func profileController(_ controller: ProfileViewController, didLikeUser user: User) {
+        guard let topCard = topCardView else {
+            return
+        }
+        controller.dismiss(animated: true) {
+            self.performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: true, count: self.counter)
+            Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 1))
+        }
+    }
+    
+    func profileController(_ controller: ProfileViewController, didDislikeUser user: User) {
+        guard let topCard = topCardView else {
+            return
+        }
+        controller.dismiss(animated: true) {
+            self.performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: false, count: self.counter)
+            Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 0))
+        }
+    }
+    
+    func profileController(_ controller: ProfileViewController, didSuperlikeUser user: User) {
+        guard let topCard = topCardView else {
+            return
+        }
+        controller.dismiss(animated: true) {
+            self.performSwipeAnimationSuperLike(topCard: topCard)
+            Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 2))
+        }
     }
 }

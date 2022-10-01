@@ -16,6 +16,7 @@ enum SwipeDirection: Int {
 
 protocol CardViewDelegate: AnyObject {
     func cardView(_ view: CardView, wantsToShowProfileFor user: User)
+    func cardView(_ view: CardView, didSwipe: Int)
 }
 
 class CardView: UIView {
@@ -24,7 +25,7 @@ class CardView: UIView {
     
     private let gradientLayer = CAGradientLayer()
     private var barStackView: SegmentedBarView?
-    private let viewModel: CardViewModel
+    let viewModel: CardViewModel
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -257,21 +258,22 @@ class CardView: UIView {
     }
     
     private func resetCardPosition(sender: UIPanGestureRecognizer) {
-        let direction: SwipeDirection = sender.translation(in: nil).x > 100 ? .right : .left
-        let shouldDismissCard = abs(sender.translation(in: nil).x) > 150
+        var direction: SwipeDirection = .left
         
+        let shouldDismissCard = abs(sender.translation(in: nil).x) > 150
         let shouldDismissCardForTop = sender.translation(in: nil).y < -300
         
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.6,
                        initialSpringVelocity: 0.1, options: .curveEaseOut) {
             
             if shouldDismissCard {
+                direction = sender.translation(in: nil).x > 100 ? .right : .left
                 let xTranslation = CGFloat(direction.rawValue) * 1000
                 let offScreenTransform = self.transform.translatedBy(x: xTranslation, y: 0)
                 self.transform = offScreenTransform
             }
             else if shouldDismissCardForTop {
-                let directionTop: SwipeDirection = .top
+                direction = .top
                 let yTranslation = CGFloat(direction.rawValue) * 1000
                 let offScreenTransform = self.transform.translatedBy(x: 0, y: yTranslation)
                 self.transform = offScreenTransform
@@ -284,7 +286,16 @@ class CardView: UIView {
             }
         } completion: { _ in
             if shouldDismissCard || shouldDismissCardForTop {
-                self.removeFromSuperview()
+                let swipeType: Int
+                switch direction {
+                case .right:
+                    swipeType = 1
+                case .top:
+                    swipeType = 2
+                case .left:
+                    swipeType = 0
+                }
+                self.delegate?.cardView(self, didSwipe: swipeType)
             }
         }
         

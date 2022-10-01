@@ -35,6 +35,7 @@
 		DFA4958F28DCA35C005B0B2B /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */; };
 		DFA64F1828CA524C00553ED6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1728CA524C00553ED6 /* CustomTextField.swift */; };
 		DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1928CA55BF00553ED6 /* AuthButton.swift */; };
+		DFA9F85828E840960049BAED /* Swipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9F85728E840960049BAED /* Swipe.swift */; };
 		DFCF229E28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */; };
 		DFE28CDC28D479B6005B7FB6 /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE28CDB28D479B6005B7FB6 /* SettingsHeader.swift */; };
 		DFEE559D28CFA4AB006FF3D8 /* TransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE559C28CFA4AB006FF3D8 /* TransitionViewController.swift */; };
@@ -76,6 +77,7 @@
 		DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
 		DFA64F1728CA524C00553ED6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DFA64F1928CA55BF00553ED6 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		DFA9F85728E840960049BAED /* Swipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swipe.swift; sourceTree = "<group>"; };
 		DFCF229D28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		DFE28CDB28D479B6005B7FB6 /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
 		DFEE559C28CFA4AB006FF3D8 /* TransitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				DF2E6F9528C5F6DC00D1E334 /* User.swift */,
+				DFA9F85728E840960049BAED /* Swipe.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,
 				DFCF229E28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift in Sources */,
 				DF861E0428E067B8000403FB /* ProfileViewController.swift in Sources */,
+				DFA9F85828E840960049BAED /* Swipe.swift in Sources */,
 				DFE28CDC28D479B6005B7FB6 /* SettingsHeader.swift in Sources */,
 				DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */,
 				DF470C4328BFD85700C2699A /* HomeViewController.swift in Sources */,

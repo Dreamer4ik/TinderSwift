@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol ProfileViewControllerDelegate: AnyObject {
+    func profileController(_ controller: ProfileViewController, didLikeUser user: User)
+    func profileController(_ controller: ProfileViewController, didDislikeUser user: User)
+    func profileController(_ controller: ProfileViewController, didSuperlikeUser user: User)
+}
+
 class ProfileViewController: UIViewController {
     
     // MARK: - Properties
+    weak var delegate: ProfileViewControllerDelegate?
     private let user: User
     private var collectionView: UICollectionView?
     private var barStackView: SegmentedBarView?
@@ -183,15 +190,15 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func didTapDislikeButton() {
-        
+        delegate?.profileController(self, didDislikeUser: user)
     }
     
     @objc private func didTapSuperlikeButton() {
-        
+        delegate?.profileController(self, didSuperlikeUser: user)
     }
     
     @objc private func didTapLikeButton() {
-        
+        delegate?.profileController(self, didLikeUser: user)
     }
 }
 
