@@ -20,11 +20,7 @@ class HomeViewController: UIViewController {
     private var cardViews = [CardView]()
     private var counter: Int = 0
     
-    private var viewModels = [CardViewModel]() {
-        didSet {
-            configureCards()
-        }
-    }
+    private var viewModels = [CardViewModel]()
     
     private let deckView: UIView = {
         let view = UIView()
@@ -59,28 +55,26 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         chechUserIsLoggedIn()
         configureUI()
-        DispatchQueue.main.async {
-            self.fetchUsers()
-        }
-        fetchUser()
+        fetchCurrentUserAndCards()
     }
     
     // MARK: - API
-    private func fetchUser() {
+    private func fetchCurrentUserAndCards() {
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
         Service.fetchUser(withUid: uid) { user in
             self.user = user
+            self.fetchUsers(forCurrentUser: user)
         }
     }
     
-    private func fetchUsers() {
+    private func fetchUsers(forCurrentUser user: User) {
         let operatioQueue = OperationQueue()
         
         operatioQueue.addOperation {
-            Service.fetchUsers { users in
-                self.viewModels = users.map({
+            Service.fetchUsers(currentUser: user) { [weak self] users in
+                self?.viewModels = users.map({
                     CardViewModel(user: $0)
                 })
             }
@@ -97,6 +91,11 @@ class HomeViewController: UIViewController {
                 self.viewBackgroundIcon.isHidden = true
             }
         }
+        operatioQueue.addOperation {
+            DispatchQueue.main.async {
+                self.configureCards()
+            }
+        }
     }
     
     private func chechUserIsLoggedIn() {
@@ -111,6 +110,13 @@ class HomeViewController: UIViewController {
     private func logOut() {
         do {
             try Auth.auth().signOut()
+            viewModels.removeAll()
+            cardViews.forEach({
+                $0.removeFromSuperview()
+            })
+            cardViews.removeAll()
+            topCardView = nil
+            counter = 0
             presentLoginController()
         }
         catch {
@@ -135,7 +141,6 @@ class HomeViewController: UIViewController {
             deckView.addSubview(cardView)
             cardView.fillSuperview()
         }
-        
         cardViews = deckView.subviews.compactMap({
             $0 as? CardView
         })
@@ -169,6 +174,7 @@ class HomeViewController: UIViewController {
     private func presentLoginController() {
         DispatchQueue.main.async {
             let vc = LoginViewController()
+            vc.delegate = self
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
@@ -277,7 +283,6 @@ extension HomeViewController: SettingsTableViewControllerDelegate {
     func settingsController(_ controller: SettingsTableViewController, wantsToUpdate user: User) {
         controller.dismiss(animated: true)
         self.user = user
-        //        fetchUsers()
     }
 }
 // MARK: - CardViewDelegate
@@ -366,5 +371,16 @@ extension HomeViewController: ProfileViewControllerDelegate {
             self.performSwipeAnimationSuperLike(topCard: topCard)
             Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 2))
         }
+    }
+}
+
+// MARK: - AuthenticationDelegate
+extension HomeViewController: AuthenticationDelegate {
+    func authenticationComplete() {
+        dismiss(animated: true)
+        self.pulsator.isHidden = false
+        self.iconView.isHidden = false
+        self.viewBackgroundIcon.isHidden = false
+        fetchCurrentUserAndCards()
     }
 }

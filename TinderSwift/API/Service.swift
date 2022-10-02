@@ -21,18 +21,31 @@ struct Service {
         }
     }
     
-    static func fetchUsers(completion: @escaping([User]) -> Void) {
+    static func fetchUsers(currentUser: User, completion: @escaping([User]) -> Void) {
         var users = [User]()
-        COLLECTION_USERS.getDocuments { snapshot, error in
-            snapshot?.documents.forEach({ document in
+        let minAge = currentUser.minSeekingAge
+        let maxAge = currentUser.maxSeekingAge
+        
+        let query = COLLECTION_USERS
+            .whereField("age", isGreaterThanOrEqualTo: minAge)
+            .whereField("age", isLessThanOrEqualTo: maxAge)
+        
+        query.getDocuments { snapshot, error in
+            guard let snapshot = snapshot else {
+                return
+            }
+            snapshot.documents.forEach({ document in
+                
                 let dictionary = document.data()
                 let user = User(dictionary: dictionary)
                 
-                users.append(user)
-                
-                if users.count == snapshot?.documents.count {
-                    completion(users)
+                if let userid = Auth.auth().currentUser?.uid {
+                   if user.uid != userid {
+                      users.append(user)
+                   }
                 }
+                
+                completion(users)
             })
         }
     }

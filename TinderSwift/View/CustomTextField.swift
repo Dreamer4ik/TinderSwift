@@ -20,6 +20,7 @@ class CustomTextField: UITextField {
         keyboardAppearance = .dark
         autocapitalizationType = .none
         borderStyle = .none
+        autocorrectionType = .no
         textColor = .white
         backgroundColor = UIColor(white: 1, alpha: 0.2)
         layer.cornerRadius = 5
