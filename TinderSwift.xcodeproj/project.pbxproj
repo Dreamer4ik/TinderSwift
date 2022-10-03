@@ -12,6 +12,8 @@
 		DF0AE44B28E1BA6200DC5DC0 /* SegmentedBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0AE44A28E1BA6200DC5DC0 /* SegmentedBarView.swift */; };
 		DF235D4428BFDCB200089DE3 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */; };
 		DF28828F28EAE70A004BA5C7 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28828E28EAE70A004BA5C7 /* MatchView.swift */; };
+		DF29BD1E28EB5A51005CD316 /* SendMessageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29BD1D28EB5A51005CD316 /* SendMessageButton.swift */; };
+		DF29BD2028EB5C94005CD316 /* KeepSwipingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29BD1F28EB5C94005CD316 /* KeepSwipingButton.swift */; };
 		DF2AA37F28D5C21F00DC1F2F /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */; };
 		DF2AA38128D5C5FF00DC1F2F /* SettingsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */; };
 		DF2E6F9628C5F6DC00D1E334 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E6F9528C5F6DC00D1E334 /* User.swift */; };
@@ -53,6 +55,8 @@
 		DF0AE44A28E1BA6200DC5DC0 /* SegmentedBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedBarView.swift; sourceTree = "<group>"; };
 		DF235D4328BFDCB200089DE3 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
 		DF28828E28EAE70A004BA5C7 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		DF29BD1D28EB5A51005CD316 /* SendMessageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageButton.swift; sourceTree = "<group>"; };
+		DF29BD1F28EB5C94005CD316 /* KeepSwipingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepSwipingButton.swift; sourceTree = "<group>"; };
 		DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewModel.swift; sourceTree = "<group>"; };
 		DF2E6F9528C5F6DC00D1E334 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -117,6 +121,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DF29BD1C28EB5A37005CD316 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				DF28828E28EAE70A004BA5C7 /* MatchView.swift */,
+				DF29BD1D28EB5A51005CD316 /* SendMessageButton.swift */,
+				DF29BD1F28EB5C94005CD316 /* KeepSwipingButton.swift */,
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
 		DF470C3228BFD85700C2699A = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +168,7 @@
 		DF470C5528BFD8B200C2699A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF29BD1C28EB5A37005CD316 /* Match */,
 				DF861E0528E07704000403FB /* Home */,
 				DF861E0628E07710000403FB /* Profile */,
 				DFA4958D28DCA33A005B0B2B /* Settings */,
@@ -161,7 +176,6 @@
 				DFA64F1728CA524C00553ED6 /* CustomTextField.swift */,
 				DFA64F1928CA55BF00553ED6 /* AuthButton.swift */,
 				DF0AE44A28E1BA6200DC5DC0 /* SegmentedBarView.swift */,
-				DF28828E28EAE70A004BA5C7 /* MatchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,6 +417,7 @@
 				DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */,
 				DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */,
 				DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */,
+				DF29BD2028EB5C94005CD316 /* KeepSwipingButton.swift in Sources */,
 				DF2AA38128D5C5FF00DC1F2F /* SettingsTableViewModel.swift in Sources */,
 				DFA4958F28DCA35C005B0B2B /* SettingsFooter.swift in Sources */,
 				DF0AE44928E1AED200DC5DC0 /* ProfileViewModel.swift in Sources */,
@@ -427,6 +442,7 @@
 				DF571B1728C7D5E80030BC64 /* LoginViewController.swift in Sources */,
 				DF39845E28D33C050007A4BA /* SettingsTableViewController.swift in Sources */,
 				DF2E6F9828C5FD7300D1E334 /* CardViewModel.swift in Sources */,
+				DF29BD1E28EB5A51005CD316 /* SendMessageButton.swift in Sources */,
 				DF8BEAD228D0A492003691C1 /* Constants.swift in Sources */,
 				DF0AE44B28E1BA6200DC5DC0 /* SegmentedBarView.swift in Sources */,
 			);
