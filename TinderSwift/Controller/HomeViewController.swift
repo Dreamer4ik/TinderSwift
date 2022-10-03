@@ -124,6 +124,29 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func saveSwipeCheckForMatch(forUser user: User, didLike: Swipe) {
+        Service.saveSwipe(forUser: user, isLike: didLike) { error in
+            
+            guard didLike.swipeType != 0 else {
+                return
+            }
+            
+            Service.checkIfMatchExists(forUser: user) { didMatch in
+                if didMatch == 1 {
+                    print("Like")
+                    self.presentMatchView(forUser: user)
+                }
+                else if didMatch == 2 {
+                    print("SuperLike")
+                    self.presentMatchView(forUser: user)
+                }
+                else {
+                    print("Dislike")
+                }
+            }
+        }
+    }
+    
     // MARK: - Helpers
     private func setupPuls() {
         pulsator.radius = 150
@@ -179,6 +202,16 @@ class HomeViewController: UIViewController {
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
         }
+    }
+    
+    private func presentMatchView(forUser: User) {
+        guard let currentUser = user else {
+            return
+        }
+        
+        let matchView = MatchView(currentUser: currentUser, matchedUser: forUser)
+        view.addSubview(matchView)
+        matchView.fillSuperview()
     }
     
     override func viewDidLayoutSubviews() {
@@ -297,7 +330,8 @@ extension HomeViewController: CardViewDelegate {
             return
         }
         
-        Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: didSwipe))
+        saveSwipeCheckForMatch(forUser: user, didLike: Swipe(swipeType: didSwipe))
+        
         self.topCardView = cardViews.last
     }
     
@@ -317,7 +351,7 @@ extension HomeViewController: BottomControlsStackViewDelegate {
         }
         
         performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: true, count: counter)
-        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 1))
+        saveSwipeCheckForMatch(forUser: topCard.viewModel.user, didLike: Swipe(swipeType: 1))
     }
     
     func tapDislikeButton() {
@@ -325,7 +359,7 @@ extension HomeViewController: BottomControlsStackViewDelegate {
             return
         }
         performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: false, count: counter)
-        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 0))
+        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 0), completion: nil)
     }
     
     func tapSuperLikeButton() {
@@ -333,7 +367,7 @@ extension HomeViewController: BottomControlsStackViewDelegate {
             return
         }
         performSwipeAnimationSuperLike(topCard: topCard)
-        Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 3))
+        saveSwipeCheckForMatch(forUser: topCard.viewModel.user, didLike: Swipe(swipeType: 2))
     }
     
     func tapRevertButton() {
@@ -349,7 +383,7 @@ extension HomeViewController: ProfileViewControllerDelegate {
         }
         controller.dismiss(animated: true) {
             self.performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: true, count: self.counter)
-            Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 1))
+            self.saveSwipeCheckForMatch(forUser: user, didLike: Swipe(swipeType: 1))
         }
     }
     
@@ -359,7 +393,7 @@ extension HomeViewController: ProfileViewControllerDelegate {
         }
         controller.dismiss(animated: true) {
             self.performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: false, count: self.counter)
-            Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 0))
+            Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 0), completion: nil)
         }
     }
     
@@ -369,7 +403,7 @@ extension HomeViewController: ProfileViewControllerDelegate {
         }
         controller.dismiss(animated: true) {
             self.performSwipeAnimationSuperLike(topCard: topCard)
-            Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 2))
+            self.saveSwipeCheckForMatch(forUser: user, didLike: Swipe(swipeType: 2))
         }
     }
 }

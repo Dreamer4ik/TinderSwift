@@ -65,7 +65,7 @@ struct Service {
         COLLECTION_USERS.document(user.uid).setData(data,completion: completion)
     }
     
-    static func saveSwipe(forUser user: User, isLike: Swipe) {
+    static func saveSwipe(forUser user: User, isLike: Swipe, completion: ((Error?) -> Void)?) {
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
@@ -74,10 +74,25 @@ struct Service {
             let data = [user.uid: isLike.swipeType]
             
             if snapshot?.exists == true {
-                COLLECTION_SWIPES.document(uid).updateData(data)
+                COLLECTION_SWIPES.document(uid).updateData(data, completion: completion)
             } else {
-                COLLECTION_SWIPES.document(uid).setData(data)
+                COLLECTION_SWIPES.document(uid).setData(data, completion: completion)
             }
+        }
+    }
+    
+    static func checkIfMatchExists(forUser user: User, completion: @escaping(Int) -> Void) {
+        guard let currentUid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        COLLECTION_SWIPES.document(user.uid).getDocument { snapshot, error in
+            guard let data = snapshot?.data(),
+                  let didMatch = data[currentUid] as? Int else {
+                return
+            }
+            
+            completion(didMatch)
         }
     }
     
