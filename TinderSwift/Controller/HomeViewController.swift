@@ -208,8 +208,9 @@ class HomeViewController: UIViewController {
         guard let currentUser = user else {
             return
         }
-        
-        let matchView = MatchView(currentUser: currentUser, matchedUser: forUser)
+        let viewModel = MatchViewViewModel(currentUser: currentUser, matchedUser: forUser)
+        let matchView = MatchView(viewModel: viewModel)
+        matchView.delegate = self
         view.addSubview(matchView)
         matchView.fillSuperview()
     }
@@ -416,5 +417,11 @@ extension HomeViewController: AuthenticationDelegate {
         self.iconView.isHidden = false
         self.viewBackgroundIcon.isHidden = false
         fetchCurrentUserAndCards()
+    }
+}
+
+extension HomeViewController: MatchViewDelegate {
+    func matchView(_ view: MatchView, wantsToSendMessageTo user: User) {
+        print("Start conversation with user \(user.name)")
     }
 }
