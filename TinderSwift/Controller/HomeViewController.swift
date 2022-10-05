@@ -77,6 +77,7 @@ class HomeViewController: UIViewController {
                 self?.viewModels = users.map({
                     CardViewModel(user: $0)
                 })
+                self?.configureCards()
             }
             Thread.sleep(forTimeInterval: 3.0)
         }
@@ -89,11 +90,6 @@ class HomeViewController: UIViewController {
                 self.pulsator.isHidden = true
                 self.iconView.isHidden = true
                 self.viewBackgroundIcon.isHidden = true
-            }
-        }
-        operatioQueue.addOperation {
-            DispatchQueue.main.async {
-                self.configureCards()
             }
         }
     }
@@ -300,7 +296,10 @@ extension HomeViewController: HomeNavigationStackViewProtocol {
     }
     
     func showMessages() {
-        let vc = UIViewController()
+        guard let user = user else {
+            return
+        }
+        let vc = MessagesViewController(user: user)
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)

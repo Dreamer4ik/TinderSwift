@@ -14,7 +14,6 @@
 		DF28828F28EAE70A004BA5C7 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28828E28EAE70A004BA5C7 /* MatchView.swift */; };
 		DF29BD1E28EB5A51005CD316 /* SendMessageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29BD1D28EB5A51005CD316 /* SendMessageButton.swift */; };
 		DF29BD2028EB5C94005CD316 /* KeepSwipingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF29BD1F28EB5C94005CD316 /* KeepSwipingButton.swift */; };
-		DF2AA37F28D5C21F00DC1F2F /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */; };
 		DF2AA38128D5C5FF00DC1F2F /* SettingsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */; };
 		DF2E6F9628C5F6DC00D1E334 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E6F9528C5F6DC00D1E334 /* User.swift */; };
 		DF2E6F9828C5FD7300D1E334 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2E6F9728C5FD7300D1E334 /* CardViewModel.swift */; };
@@ -30,12 +29,15 @@
 		DF4AC74328D4FDD6009A8FA5 /* confetti.json in Resources */ = {isa = PBXBuildFile; fileRef = DF4AC74228D4FDD6009A8FA5 /* confetti.json */; };
 		DF571B1728C7D5E80030BC64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF571B1628C7D5E80030BC64 /* LoginViewController.swift */; };
 		DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF571B1828C7D6140030BC64 /* RegistrationViewController.swift */; };
+		DF83B28928EDFC7100A9F981 /* MessageMatchHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF83B28828EDFC7100A9F981 /* MessageMatchHeaderCollectionReusableView.swift */; };
+		DF83B28C28EDFFF300A9F981 /* MessageMatchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF83B28B28EDFFF300A9F981 /* MessageMatchCollectionViewCell.swift */; };
 		DF861E0428E067B8000403FB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF861E0328E067B8000403FB /* ProfileViewController.swift */; };
 		DF861E0828E07737000403FB /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF861E0728E07737000403FB /* ProfileCollectionViewCell.swift */; };
 		DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89789E28C1101E00E1DBD0 /* CardView.swift */; };
 		DF8BEAD228D0A492003691C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BEAD128D0A492003691C1 /* Constants.swift */; };
 		DF8F1BBB28ECA9B400CA6776 /* MatchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F1BBA28ECA9B400CA6776 /* MatchViewViewModel.swift */; };
 		DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */; };
+		DFA2778128ED95E500CF4D1A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2778028ED95E500CF4D1A /* MessagesViewController.swift */; };
 		DFA4958F28DCA35C005B0B2B /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */; };
 		DFA64F1828CA524C00553ED6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1728CA524C00553ED6 /* CustomTextField.swift */; };
 		DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA64F1928CA55BF00553ED6 /* AuthButton.swift */; };
@@ -58,7 +60,6 @@
 		DF28828E28EAE70A004BA5C7 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 		DF29BD1D28EB5A51005CD316 /* SendMessageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageButton.swift; sourceTree = "<group>"; };
 		DF29BD1F28EB5C94005CD316 /* KeepSwipingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepSwipingButton.swift; sourceTree = "<group>"; };
-		DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewModel.swift; sourceTree = "<group>"; };
 		DF2E6F9528C5F6DC00D1E334 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DF2E6F9728C5FD7300D1E334 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
@@ -76,12 +77,15 @@
 		DF4AC74228D4FDD6009A8FA5 /* confetti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = confetti.json; sourceTree = "<group>"; };
 		DF571B1628C7D5E80030BC64 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DF571B1828C7D6140030BC64 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		DF83B28828EDFC7100A9F981 /* MessageMatchHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMatchHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		DF83B28B28EDFFF300A9F981 /* MessageMatchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMatchCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF861E0328E067B8000403FB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DF861E0728E07737000403FB /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF89789E28C1101E00E1DBD0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DF8BEAD128D0A492003691C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DF8F1BBA28ECA9B400CA6776 /* MatchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewViewModel.swift; sourceTree = "<group>"; };
 		DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		DFA2778028ED95E500CF4D1A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
 		DFA64F1728CA524C00553ED6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DFA64F1928CA55BF00553ED6 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				DF861E0528E07704000403FB /* Home */,
 				DF861E0628E07710000403FB /* Profile */,
 				DFA4958D28DCA33A005B0B2B /* Settings */,
+				DF83B28A28EDFFC200A9F981 /* Message */,
 				DF89789E28C1101E00E1DBD0 /* CardView.swift */,
 				DFA64F1728CA524C00553ED6 /* CustomTextField.swift */,
 				DFA64F1928CA55BF00553ED6 /* AuthButton.swift */,
@@ -206,9 +211,9 @@
 				DF571B1528C7D5B00030BC64 /* Auth */,
 				DF4AC74428D50A41009A8FA5 /* Transition */,
 				DF470C4228BFD85700C2699A /* HomeViewController.swift */,
+				DFA2778028ED95E500CF4D1A /* MessagesViewController.swift */,
 				DF861E0328E067B8000403FB /* ProfileViewController.swift */,
 				DF39845D28D33C050007A4BA /* SettingsTableViewController.swift */,
-				DF2AA37E28D5C21F00DC1F2F /* CheckViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -270,6 +275,15 @@
 				DFEEC55A28CCF96100A2C140 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DF83B28A28EDFFC200A9F981 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				DF83B28828EDFC7100A9F981 /* MessageMatchHeaderCollectionReusableView.swift */,
+				DF83B28B28EDFFF300A9F981 /* MessageMatchCollectionViewCell.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		DF861E0528E07704000403FB /* Home */ = {
@@ -415,7 +429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF2AA37F28D5C21F00DC1F2F /* CheckViewController.swift in Sources */,
 				DF28828F28EAE70A004BA5C7 /* MatchView.swift in Sources */,
 				DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */,
 				DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */,
@@ -428,8 +441,10 @@
 				DF4A424D28C0AE8200E06A85 /* BottomControlsStackView.swift in Sources */,
 				DF470C5E28BFDBB100C2699A /* Extensions.swift in Sources */,
 				DFCF229E28D5BE1E00D5A8D9 /* SettingsTableViewCell.swift in Sources */,
+				DF83B28928EDFC7100A9F981 /* MessageMatchHeaderCollectionReusableView.swift in Sources */,
 				DF861E0428E067B8000403FB /* ProfileViewController.swift in Sources */,
 				DFA9F85828E840960049BAED /* Swipe.swift in Sources */,
+				DFA2778128ED95E500CF4D1A /* MessagesViewController.swift in Sources */,
 				DFE28CDC28D479B6005B7FB6 /* SettingsHeader.swift in Sources */,
 				DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */,
 				DF470C4328BFD85700C2699A /* HomeViewController.swift in Sources */,
@@ -442,6 +457,7 @@
 				DFA64F1828CA524C00553ED6 /* CustomTextField.swift in Sources */,
 				DF8F1BBB28ECA9B400CA6776 /* MatchViewViewModel.swift in Sources */,
 				DF470C4128BFD85700C2699A /* SceneDelegate.swift in Sources */,
+				DF83B28C28EDFFF300A9F981 /* MessageMatchCollectionViewCell.swift in Sources */,
 				DFEEC55D28CD028300A2C140 /* AuthService.swift in Sources */,
 				DF571B1728C7D5E80030BC64 /* LoginViewController.swift in Sources */,
 				DF39845E28D33C050007A4BA /* SettingsTableViewController.swift in Sources */,

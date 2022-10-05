@@ -27,8 +27,7 @@ class HomeNavigationStackView: UIStackView {
         
         heightAnchor.constraint(equalToConstant: 80).isActive = true
         tinderIcon.contentMode = .scaleAspectFit
-        tinderIcon.tintColor = UIColor(hue: 0.975, saturation: 0.61, brightness: 0.9, alpha: 1.0)
-//        tinderIcon.tintColor = UIColor(hue: 0.9861, saturation: 0.58, brightness: 0.89, alpha: 1.0)
+        tinderIcon.tintColor = #colorLiteral(red: 0.9826375842, green: 0.3476698399, blue: 0.447683692, alpha: 1)
         
         settingsButton.setImage(UIImage(named: "top_left_profile")?.withRenderingMode(.alwaysOriginal), for: .normal)
         messageButton.setImage(UIImage(named: "top_right_messages")?.withRenderingMode(.alwaysOriginal), for: .normal)
