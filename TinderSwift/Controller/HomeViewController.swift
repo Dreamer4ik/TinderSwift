@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     private let bottomStack = BottomControlsStackView()
     private let operationQueue = OperationQueue()
     private var topCardView: CardView?
+    private var saveRevertModel: CardViewModel?
     private var cardViews = [CardView]()
     private var counter: Int = 0
     
@@ -131,10 +132,20 @@ class HomeViewController: UIViewController {
                 if didMatch == 1 {
                     print("Like")
                     self.presentMatchView(forUser: user)
+                    
+                    guard let currentUser = self.user else {
+                        return
+                    }
+                    Service.uploadMatch(currentUser: currentUser, matchedUser: user)
                 }
                 else if didMatch == 2 {
                     print("SuperLike")
                     self.presentMatchView(forUser: user)
+                    
+                    guard let currentUser = self.user else {
+                        return
+                    }
+                    Service.uploadMatch(currentUser: currentUser, matchedUser: user)
                 }
                 else {
                     print("Dislike")
@@ -160,6 +171,7 @@ class HomeViewController: UIViewController {
             deckView.addSubview(cardView)
             cardView.fillSuperview()
         }
+        print("View models config \(viewModels.count)")
         cardViews = deckView.subviews.compactMap({
             $0 as? CardView
         })
@@ -358,6 +370,8 @@ extension HomeViewController: BottomControlsStackViewDelegate {
         guard let topCard = topCardView else {
             return
         }
+        saveRevertModel = topCard.viewModel
+        print("TopCard dislike: \(topCard.viewModel.user.name)")
         performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: false, count: counter)
         Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 0), completion: nil)
     }
@@ -371,7 +385,33 @@ extension HomeViewController: BottomControlsStackViewDelegate {
     }
     
     func tapRevertButton() {
+        guard let revertCardModel = saveRevertModel else {
+            return
+        }
         
+        viewModels.removeAll {
+            $0.user.uid == revertCardModel.user.uid
+        }
+        
+        cardViews.forEach({
+            if $0.viewModel.user.uid == revertCardModel.user.uid {
+                $0.removeFromSuperview()
+            }
+        })
+        
+        cardViews.removeAll(where: {
+            $0.viewModel.user.uid == revertCardModel.user.uid
+        })
+        
+        let cardView = CardView(viewModel: revertCardModel)
+        cardView.delegate = self
+        deckView.addSubview(cardView)
+        cardView.fillSuperview()
+        cardViews = deckView.subviews.compactMap({
+            $0 as? CardView
+        })
+        topCardView = cardViews.last
+        saveRevertModel = nil
     }
 }
 
@@ -391,6 +431,7 @@ extension HomeViewController: ProfileViewControllerDelegate {
         guard let topCard = topCardView else {
             return
         }
+        saveRevertModel = topCard.viewModel
         controller.dismiss(animated: true) {
             self.performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: false, count: self.counter)
             Service.saveSwipe(forUser: user, isLike: Swipe(swipeType: 0), completion: nil)

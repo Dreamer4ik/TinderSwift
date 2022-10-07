@@ -35,6 +35,7 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         configureUI()
+        fetchMatches()
     }
     
     override func viewDidLayoutSubviews() {
@@ -43,7 +44,7 @@ class MessagesViewController: UIViewController {
             x: 0,
             y: 0,
             width: view.width,
-            height: 200
+            height: 190
         )
         tablewView.frame = view.bounds
     }
@@ -58,6 +59,14 @@ class MessagesViewController: UIViewController {
         view.addSubview(tablewView)
         
         tablewView.tableHeaderView = headerView
+        headerView.delegate = self
+        
+        if #available(iOS 15.0, *) {
+            tablewView.sectionHeaderTopPadding = 0
+        } else {
+            // Fallback on earlier versions
+        }
+        
     }
     
     private func configureNavigationBar() {
@@ -81,6 +90,13 @@ class MessagesViewController: UIViewController {
     // MARK: Actions
     @objc private func didTapDismiss() {
         dismiss(animated: true)
+    }
+    
+    // MARK: API
+    func fetchMatches() {
+        Service.fetchMatches { matches in
+            self.headerView.matches = matches
+        }
     }
 }
 
@@ -110,4 +126,14 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+}
+
+// MARK: MessageMatchHeaderCollectionReusableViewDelegate
+extension MessagesViewController: MessageMatchHeaderCollectionReusableViewDelegate {
+    
+func matchHeader(_ header: MessageMatchHeaderCollectionReusableView, wantsToStartChatWith uid: String) {
+    Service.fetchUser(withUid: uid) { user in
+        print("Start chat with \(user.name)")
+    }
+}
 }

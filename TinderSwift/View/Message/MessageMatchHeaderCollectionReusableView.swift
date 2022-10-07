@@ -7,7 +7,19 @@
 
 import UIKit
 
+protocol MessageMatchHeaderCollectionReusableViewDelegate: AnyObject {
+    func matchHeader(_ header: MessageMatchHeaderCollectionReusableView, wantsToStartChatWith uid: String)
+}
+
 class MessageMatchHeaderCollectionReusableView: UICollectionReusableView {
+    
+    var matches = [Match]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    weak var delegate: MessageMatchHeaderCollectionReusableViewDelegate?
     
     private let newMatchLabel: UILabel = {
         let label = UILabel()
@@ -46,7 +58,7 @@ class MessageMatchHeaderCollectionReusableView: UICollectionReusableView {
 
 extension MessageMatchHeaderCollectionReusableView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return matches.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,8 +66,14 @@ extension MessageMatchHeaderCollectionReusableView: UICollectionViewDelegate, UI
         ) as? MessageMatchCollectionViewCell else {
             preconditionFailure("MessageMatchHeaderCollectionReusableView Error")
         }
-        
+        let viewModel = MatchCellViewModel(match: matches[indexPath.row])
+        cell.configure(viewModel: viewModel)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let uid = matches[indexPath.row].uid
+        delegate?.matchHeader(self, wantsToStartChatWith: uid)
     }
 }
 

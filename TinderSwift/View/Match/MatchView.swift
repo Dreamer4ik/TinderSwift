@@ -35,7 +35,6 @@ class MatchView: UIView {
     
     private let currentUserImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "jane1")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 2
@@ -45,7 +44,6 @@ class MatchView: UIView {
     
     private let matchedUserImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "kelly1")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 2
@@ -56,13 +54,15 @@ class MatchView: UIView {
     private let sendMessageButton: UIButton = {
         let button = SendMessageButton(type: .system)
         button.setTitle("SEND MESSAGE", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
     
     private let keepSwipingButton: UIButton = {
         let button = KeepSwipingButton(type: .system)
-        button.setTitle("Keep Swiping", for: .normal)
+        button.setTitle("KEEP SWIPING", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -95,17 +95,19 @@ class MatchView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let currentUserImageSize: CGFloat = 140
-        currentUserImageView.anchor(right: centerXAnchor, paddingRight: 16)
-        currentUserImageView.setDimensions(height: currentUserImageSize, width: currentUserImageSize)
-        currentUserImageView.layer.cornerRadius = currentUserImageSize/2
-        currentUserImageView.centerY(inView: self)
-        
+//        currentUserImageView
+//        currentUserImageSize
         let matchedUserImageSize: CGFloat = 140
-        matchedUserImageView.anchor(left: centerXAnchor, paddingLeft: 16)
+        matchedUserImageView.anchor(right: centerXAnchor, paddingRight: 16)
         matchedUserImageView.setDimensions(height: matchedUserImageSize, width: matchedUserImageSize)
         matchedUserImageView.layer.cornerRadius = matchedUserImageSize/2
         matchedUserImageView.centerY(inView: self)
+        
+        let currentUserImageSize: CGFloat = 140
+        currentUserImageView.anchor(left: centerXAnchor, paddingLeft: 16)
+        currentUserImageView.setDimensions(height: currentUserImageSize, width: currentUserImageSize)
+        currentUserImageView.layer.cornerRadius = currentUserImageSize/2
+        currentUserImageView.centerY(inView: self)
         
         sendMessageButton.anchor(top: currentUserImageView.bottomAnchor, left: leftAnchor, right: rightAnchor,
                                  paddingTop: 32, paddingLeft: 48, paddingRight: 48)
@@ -172,9 +174,9 @@ class MatchView: UIView {
         
         let angle = 30 * CGFloat.pi / 180
         
-        currentUserImageView.transform = CGAffineTransform(rotationAngle: -angle).concatenating(CGAffineTransform(translationX: 200, y: 0))
+        matchedUserImageView.transform = CGAffineTransform(rotationAngle: -angle).concatenating(CGAffineTransform(translationX: 200, y: 0))
         
-        matchedUserImageView.transform = CGAffineTransform(rotationAngle: angle).concatenating(CGAffineTransform(translationX: -200, y: 0))
+        currentUserImageView.transform = CGAffineTransform(rotationAngle: angle).concatenating(CGAffineTransform(translationX: -200, y: 0))
         
         sendMessageButton.transform = CGAffineTransform(translationX: -500, y: 0)
         keepSwipingButton.transform = CGAffineTransform(translationX: 500, y: 0)

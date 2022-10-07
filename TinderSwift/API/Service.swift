@@ -65,6 +65,24 @@ struct Service {
         }
     }
     
+    static func fetchMatches(completion: @escaping([Match]) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        COLLECTION_MATCHES.document(uid).collection("matches").getDocuments { snapshot, error in
+            guard let data = snapshot else {
+                return
+            }
+            
+            let matches = data.documents.map({
+                Match(dictionary: $0.data())
+            })
+            
+            completion(matches)
+        }
+    }
+    
     static func saveUserData(user: User, completion: @escaping(Error?) -> Void) {
         let data = [
             "fullname": user.name,
@@ -106,9 +124,33 @@ struct Service {
                   let didMatch = data[currentUid] as? Int else {
                 return
             }
-            
             completion(didMatch)
         }
+    }
+    
+    static func uploadMatch(currentUser: User, matchedUser: User) {
+        guard let profileImageURL = matchedUser.imageURLs.first,
+              let currentUserProfileImageURL = currentUser.imageURLs.first else {
+            return
+        }
+        
+        let matchedUserData = [
+            "uid:": matchedUser.uid,
+            "name": matchedUser.name,
+            "profileImageURL": profileImageURL
+        ]
+        
+        COLLECTION_MATCHES.document(currentUser.uid).collection("matches")
+            .document(matchedUser.uid).setData(matchedUserData)
+        
+        let currentUserData = [
+            "uid:": currentUser.uid,
+            "name": currentUser.name,
+            "profileImageURL": currentUserProfileImageURL
+        ]
+        
+        COLLECTION_MATCHES.document(matchedUser.uid).collection("matches")
+            .document(currentUser.uid).setData(currentUserData)
     }
     
     static func uploadImage(image: UIImage, completion: @escaping(String) -> Void) {

@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MessageMatchCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
-    static let identifier = "MessageMatchHeaderCollectionReusableView"
+    static let identifier = "MessageMatchCollectionViewCell"
     
     private let profileImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "jane1"))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 2
@@ -22,7 +23,6 @@ class MessageMatchCollectionViewCell: UICollectionViewCell {
     
     private let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Username"
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.textColor = .darkGray
         label.textAlignment = .center
@@ -49,5 +49,12 @@ class MessageMatchCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(viewModel: MatchCellViewModel) {
+        usernameLabel.text = viewModel.name
+        if let url = viewModel.profileImageURL {
+            profileImageView.sd_setImage(with: url)
+        }
     }
 }

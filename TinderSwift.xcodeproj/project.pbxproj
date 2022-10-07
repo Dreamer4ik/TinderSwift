@@ -36,6 +36,8 @@
 		DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF89789E28C1101E00E1DBD0 /* CardView.swift */; };
 		DF8BEAD228D0A492003691C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BEAD128D0A492003691C1 /* Constants.swift */; };
 		DF8F1BBB28ECA9B400CA6776 /* MatchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8F1BBA28ECA9B400CA6776 /* MatchViewViewModel.swift */; };
+		DF91961328EED5170050066E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF91961228EED5170050066E /* Match.swift */; };
+		DF91961528EEE3560050066E /* MatchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF91961428EEE3560050066E /* MatchCellViewModel.swift */; };
 		DF94DF1028CB4D6A007F3577 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */; };
 		DFA2778128ED95E500CF4D1A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA2778028ED95E500CF4D1A /* MessagesViewController.swift */; };
 		DFA4958F28DCA35C005B0B2B /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */; };
@@ -84,6 +86,8 @@
 		DF89789E28C1101E00E1DBD0 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DF8BEAD128D0A492003691C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DF8F1BBA28ECA9B400CA6776 /* MatchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewViewModel.swift; sourceTree = "<group>"; };
+		DF91961228EED5170050066E /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		DF91961428EEE3560050066E /* MatchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCellViewModel.swift; sourceTree = "<group>"; };
 		DF94DF0F28CB4D6A007F3577 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		DFA2778028ED95E500CF4D1A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		DFA4958E28DCA35C005B0B2B /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 				DF2AA38028D5C5FF00DC1F2F /* SettingsTableViewModel.swift */,
 				DF0AE44828E1AED200DC5DC0 /* ProfileViewModel.swift */,
 				DF8F1BBA28ECA9B400CA6776 /* MatchViewViewModel.swift */,
+				DF91961428EEE3560050066E /* MatchCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 			children = (
 				DF2E6F9528C5F6DC00D1E334 /* User.swift */,
 				DFA9F85728E840960049BAED /* Swipe.swift */,
+				DF91961228EED5170050066E /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF91961528EEE3560050066E /* MatchCellViewModel.swift in Sources */,
 				DF28828F28EAE70A004BA5C7 /* MatchView.swift in Sources */,
 				DF89789F28C1101E00E1DBD0 /* CardView.swift in Sources */,
 				DFA64F1A28CA55BF00553ED6 /* AuthButton.swift in Sources */,
@@ -445,6 +452,7 @@
 				DF861E0428E067B8000403FB /* ProfileViewController.swift in Sources */,
 				DFA9F85828E840960049BAED /* Swipe.swift in Sources */,
 				DFA2778128ED95E500CF4D1A /* MessagesViewController.swift in Sources */,
+				DF91961328EED5170050066E /* Match.swift in Sources */,
 				DFE28CDC28D479B6005B7FB6 /* SettingsHeader.swift in Sources */,
 				DF571B1928C7D6140030BC64 /* RegistrationViewController.swift in Sources */,
 				DF470C4328BFD85700C2699A /* HomeViewController.swift in Sources */,
