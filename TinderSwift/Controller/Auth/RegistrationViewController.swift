@@ -22,7 +22,7 @@ class RegistrationViewController: UIViewController {
         return button
     }()
     
-    private let emailTextField = CustomTextField(placeholder: "Email")
+    private let emailTextField = CustomTextField(placeholder: "Email", isEmailField: true)
     private let fullnameTextField = CustomTextField(placeholder: "Full Name")
     private let passwordTextField = CustomTextField(placeholder: "Password", isSecureField: true)
     
@@ -69,6 +69,10 @@ class RegistrationViewController: UIViewController {
     func configureUI() {
         configureGradientLayer()
         addSubviews()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapDismiss))
+        view.addGestureRecognizer(tap)
+        
         selectPhotoButton.addTarget(self, action: #selector(didTapSelectPhoto), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
         goToLoginButton.addTarget(self, action: #selector(didTapGoToLogin), for: .touchUpInside)
@@ -182,6 +186,10 @@ class RegistrationViewController: UIViewController {
             viewModel.fullname = sender.text
         }
         checkFormStatus()
+    }
+    
+    @objc private func didTapDismiss() {
+        view.endEditing(true)
     }
 }
 

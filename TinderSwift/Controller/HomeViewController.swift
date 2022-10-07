@@ -171,7 +171,6 @@ class HomeViewController: UIViewController {
             deckView.addSubview(cardView)
             cardView.fillSuperview()
         }
-        print("View models config \(viewModels.count)")
         cardViews = deckView.subviews.compactMap({
             $0 as? CardView
         })
@@ -371,7 +370,6 @@ extension HomeViewController: BottomControlsStackViewDelegate {
             return
         }
         saveRevertModel = topCard.viewModel
-        print("TopCard dislike: \(topCard.viewModel.user.name)")
         performSwipeAnimationLikeAndDislike(topCard: topCard, shouldLike: false, count: counter)
         Service.saveSwipe(forUser: topCard.viewModel.user, isLike: Swipe(swipeType: 0), completion: nil)
     }

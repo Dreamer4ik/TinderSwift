@@ -34,6 +34,7 @@ class MessageMatchHeaderCollectionReusableView: UICollectionReusableView {
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(MessageMatchCollectionViewCell.self, forCellWithReuseIdentifier: MessageMatchCollectionViewCell.identifier)
+        collection.showsHorizontalScrollIndicator = false
         return collection
     }()
     

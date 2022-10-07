@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         return imageView
     }()
     
-    private let emailTextField = CustomTextField(placeholder: "Email")
+    private let emailTextField = CustomTextField(placeholder: "Email", isEmailField: true)
     private let passwordTextField = CustomTextField(placeholder: "Password", isSecureField: true)
     private let authButton : AuthButton = {
         let button = AuthButton(type: .system)
@@ -70,6 +70,9 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
         configureGradientLayer()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapDismiss))
+        view.addGestureRecognizer(tap)
         
 //        let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, authButton])
 //        stack.axis = .vertical
@@ -172,5 +175,9 @@ class LoginViewController: UIViewController {
             viewModel.password = sender.text
         }
         checkFormStatus()
+    }
+    
+    @objc private func didTapDismiss() {
+        view.endEditing(true)
     }
 }

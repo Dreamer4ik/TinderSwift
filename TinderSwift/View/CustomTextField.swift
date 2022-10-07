@@ -9,7 +9,7 @@ import UIKit
 
 class CustomTextField: UITextField {
     
-    init(placeholder: String, isSecureField: Bool? = false) {
+    init(placeholder: String, isSecureField: Bool? = false, isEmailField: Bool? = false) {
         super.init(frame: .zero)
         
         let spacer = UIView()
@@ -27,6 +27,9 @@ class CustomTextField: UITextField {
         attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor:
                                                                                         UIColor(white: 1, alpha: 0.7)])
         isSecureTextEntry = isSecureField!
+        if isEmailField! {
+            keyboardType = .emailAddress
+        }
     }
     
     required init?(coder: NSCoder) {
